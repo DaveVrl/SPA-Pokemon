@@ -1,9 +1,8 @@
-const { Pokemon } = require("../db");
+const { Pokemon , Type } = require("../db");
 
 const postPokemon = async (req , res) => {
     try {
-        const{ id , name , image , hp , attack , defense , speed , height , weight } = req.body;
-
+        const{ id , name , image , hp , attack , defense , speed , height , weight , type} = req.body;
 
         if(!name || !image || !hp || !attack || !defense) return res.status(401).send("Faltan datos");
         
@@ -26,6 +25,12 @@ const postPokemon = async (req , res) => {
                 height:height,
                 weight:weight
         });
+
+        const typeDB = await Type.findAll({
+            where: {type:type}
+        });
+
+        newPoke.setTypes(typeDB);
 
         return res.status(200).json(newPoke);
 
