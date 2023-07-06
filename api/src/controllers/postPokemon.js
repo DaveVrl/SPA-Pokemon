@@ -1,20 +1,45 @@
 const { Pokemon , Type } = require("../db");
+const axios = require("axios");
+const URL = "https://pokeapi.co/api/v2/pokemon";
 
 const postPokemon = async (req , res) => {
     try {
         const{ id , name , image , hp , attack , defense , speed , height , weight , type} = req.body;
 
         if(!name || !image || !hp || !attack || !defense) return res.status(401).send("Faltan datos");
+
+        let nameLow = name.toLowerCase();
+
+        //Validación API
+
+        let dataExists = false;
+
+        try {
+
+        const response = await axios(`${URL}/${nameLow}`);
+        const data = response.data;
+
+        if (data && data.name) dataExists = true;
+
+        } catch (error) {
+            console.error("No se encuentra NAME en la petición a la API, continua el código");
+        }
+
+        if(dataExists) throw new Error(`El Pokemon ${name} ya existe`);
+
         
-//Ver como validar por may o min
+
+        //Validación DB
         const pokemonExists = await Pokemon.findOne({
             where:{
-                name:name
+                name:nameLow
             }
         });
-
+        
         if(pokemonExists) throw new Error(`El Pokemon ${name} ya existe.`);
 
+
+        //Pasa validaciónes => Se crea
         const newPoke = await Pokemon.create({
                 name:name,
                 image:image,
