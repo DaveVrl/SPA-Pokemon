@@ -14,6 +14,8 @@ const getPokemonById = async (req , res) => {
             return res.status(400).send("ID Not Found");
         }
 
+        if(id > 50) throw new Error("El ID debe ser menor a 50")
+
         const { data } = await axios(`${URL}/${id}`);
     
         const pokemon = {

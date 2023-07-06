@@ -1,4 +1,4 @@
-const URL = "https://pokeapi.co/api/v2/pokemon/";
+const URL = "https://pokeapi.co/api/v2/pokemon?limit=50&offset=0";
 const axios = require("axios");
 
 const getAllPokemons = async (req, res) => {
@@ -30,7 +30,7 @@ const getAllPokemons = async (req, res) => {
             return {id, name, image, hp, attack, defense, speed, height, weight, type};
         }));
 
-        console.log(mapResults)
+        //console.log(mapResults)
 
         return res.status(200).json(mapResults);
 
