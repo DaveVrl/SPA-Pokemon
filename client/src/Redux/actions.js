@@ -5,7 +5,7 @@ export const getPokes = (pokemons) => {
     const endpoint = "http://localhost:3001/pokemons";
     return async (dispatch) => {
         try {
-            const { data } = await axios.get(endpoint, pokemons);
+            const { data } = await axios.get(endpoint);
             if(!data) throw new Error("No se obtuvo la data-pokemons");
 
             return dispatch({
@@ -22,7 +22,7 @@ export const getTypes = (types) => {
     const endpoint = "http://localhost:3001/type";
     return async (dispatch) => {
         try {
-            const { data } = await axios.get(endpoint, types);
+            const { data } = await axios.get(endpoint);
             if(!data) throw new Error("No se obtuvo la data-type");
 
             return dispatch({
