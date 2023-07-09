@@ -1,5 +1,5 @@
 import { useDispatch , useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Card from '../Card/Card';
 import { getPokes } from '../../Redux/actions';
 import style from './Cards.module.css';
@@ -7,26 +7,56 @@ import style from './Cards.module.css';
 const Cards = () => {
     const dispatch = useDispatch();
 
-    const pokemons = useSelector(state => state.pokemons);
+    const allPokemons = useSelector(state => state.pokemons);
 
-///////////////////////////////////////////////////////////////////////////////
-
-    const nextHandler = () => {
-        console.log("next")
-      }
-    
-      const prevHandler = () => {
-        console.log("prev")
-      }
-    
     useEffect(() => {
         dispatch(getPokes())
-    }, [dispatch] )
+    }, [dispatch]);
+
+//---------------------------------------------------------
+    const [pokemons , setPokemons] = useState([]);
+
+    useEffect(() => {
+        setPokemons([...allPokemons].splice(0, itemsPerPage));
+      }, [allPokemons]);
+//---------------------------------------------------------
+
+    const [currentPage , setCurrentPage] = useState(1);
+
+//------------------------------------------------ PAGINADO
+    const itemsPerPage = 12;
+
+    const nextHandler = () => {
+        const totalElementos = allPokemons.length;
+        
+        const nextPage = currentPage + 1;
+
+        const firstIndex = (nextPage - 1) * itemsPerPage; // -1 por el Índice
+
+        if(firstIndex === totalElementos) return;
+        
+        setPokemons([...allPokemons].splice(firstIndex , itemsPerPage))
+
+        setCurrentPage(nextPage)
+      };
+    
+      const prevHandler = () => {
+        const prevPage = currentPage - 1;
+
+        if(prevPage <= 0) return;
+
+        const firstIndex = (prevPage - 1) * itemsPerPage;  // -1 por el Índice
+
+        setPokemons([...allPokemons].splice(firstIndex , itemsPerPage))
+
+        setCurrentPage(prevPage);
+      };
 
     return (
         <div className={style.container}>
             <div className={style.buttons_container}>
                 <button onClick={prevHandler}>&#60;</button>
+                <p>{currentPage}</p>
                 <button onClick={nextHandler}>&#62;</button>
             </div>
             <div className={style.cards_container}>
