@@ -1,8 +1,10 @@
-import { GET_POKES , GET_TYPES} from "./action-types";
+import { GET_POKES , GET_TYPES, GET_POKE_NAME, GET_POKE_ID } from "./action-types";
 
 const initialState = {
     pokemons: [],
-    types: []
+    types: [],
+    pokemon: [],
+    id: []
 }
 
 const reducer = (state = initialState , action) => {
@@ -17,6 +19,18 @@ const reducer = (state = initialState , action) => {
             return {
                 ...state,
                 types: action.payload
+            };
+        
+        case GET_POKE_NAME:
+            return {
+                ...state,
+                pokemon: action.payload
+            }
+        
+        case GET_POKE_ID:
+            return {
+                ...state,
+                id: action.payload
             }
 
     

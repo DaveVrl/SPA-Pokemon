@@ -2,15 +2,15 @@ import style from './Card.module.css';
 import { NavLink } from 'react-router-dom';
 
 
-const Card = ({name , image, type}) => {
+const Card = ({id, name , image, type}) => {
     return(
+        <NavLink className={style.navLink} to={`/detail/${id}`}>
         <div className={style.card}>
             <img className={style.img} src={image} alt="#" />
-            <NavLink className={style.navLink}>
             <h1>{name}</h1>
-            </NavLink>
             <h3>{type}</h3>
         </div>
+        </NavLink>
     )
 }
 
