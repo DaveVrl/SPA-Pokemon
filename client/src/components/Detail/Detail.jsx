@@ -12,10 +12,6 @@ const Detail = () => {
         dispatch(getPokeId(id))
     }, [dispatch , id]);
 
-
-    console.log(pokemon)
-
-
     return (
         <div>
             {

@@ -1,4 +1,5 @@
-import { GET_POKES , GET_TYPES , GET_POKE_NAME , GET_POKE_ID } from "./action-types";
+import { GET_POKES, GET_TYPES, GET_POKE_NAME, GET_POKE_ID, FILTER_ORDER, FILTER_TYPE, ORDER_BY_ATTACK } from "./action-types";
+
 import axios from "axios";
 
 export const getPokes = () => {
@@ -68,5 +69,26 @@ export const getPokeId = (id) => {
         } catch (error) {
             console.error(error.message)
         }
+    }
+};
+
+export const filterOrder = (order) => {
+    return {
+        type: FILTER_ORDER,
+        payload: order
+    }
+};
+
+export const orderByAttack = (attack) => {
+    return {
+        type: ORDER_BY_ATTACK,
+        payload: attack
+    }
+};
+
+export const filterType = (type) => {
+    return {
+        type: FILTER_TYPE,
+        payload: type
     }
 };
