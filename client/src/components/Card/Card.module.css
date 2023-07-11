@@ -18,6 +18,8 @@
 }
 
 .img {
-    border-radius: 100%;
-    box-shadow: 10px 10px 90px 0px rgba(255,255,255,0.45);
+    margin: 0 auto;
+    width: 220px;
+    height: 220px;
+    object-fit: contain;
 }
