@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { filterOrder , filterType , orderByAttack } from "../../Redux/actions";
+import { filterOrder , filterType , orderByAttack , filterOrigin } from "../../Redux/actions";
 
 const Filter = () => {
     const dispatch = useDispatch();
@@ -16,26 +16,31 @@ const Filter = () => {
         dispatch(filterType(event.target.value));
     };
 
+    const filterByOrigin = (event) => {
+        dispatch(filterOrigin(event.target.value));
+    }
+
     return (
         <div>
                 <select onChange={handleOrder}>
-                    <option>Alphabetical Order:</option>
+                    {/* <option disabled >Alphabetical Order:</option> */}
                     <option value="A">Ascending</option>
                     <option value="D">Descending</option>
                 </select>
                 <select onChange={handleAttack}>
-                    <option>Order by Attack Points:</option>
+                    {/* <option disabled >Order by Attack Points:</option> */}
                     <option value="A">Ascending</option>
                     <option value="D">Descending</option>
                 </select>
-                <select>
-                    <option>Origin:</option>
+                <select onChange={filterByOrigin}>
+                    {/* <option disabled >Origin:</option> */}
+                    <option value="all">All Origins</option>
                     <option value="api">API</option>
                     <option value="db">DataBase</option>
-                    <option value="all">All Origins</option>
                 </select>
                 <select onChange={handleFilter}>
-                    <option>Type:</option>
+                    {/* <option disabled >Type:</option> */}
+                    <option value="allTypes">All Types</option>
                     <option value="normal">Normal</option>
                     <option value="fighting">Fighting</option>
                     <option value="flying">Flying</option>
@@ -56,7 +61,6 @@ const Filter = () => {
                     <option value="fairy">Fairy</option>
                     <option value="unknown">Unknown</option>
                     <option value="shadow">Shadow</option>
-                    <option value="allTypes">All Types</option>
                 </select>
             </div>
     )

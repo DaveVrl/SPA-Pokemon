@@ -1,4 +1,4 @@
-import { GET_POKES, GET_TYPES, GET_POKE_NAME, GET_POKE_ID, FILTER_ORDER, FILTER_TYPE, ORDER_BY_ATTACK } from "./action-types";
+import { GET_POKES, GET_TYPES, GET_POKE_NAME, GET_POKE_ID, FILTER_ORDER, FILTER_TYPE, ORDER_BY_ATTACK, FILTER_ORIGIN } from "./action-types";
 
 import axios from "axios";
 
@@ -92,3 +92,10 @@ export const filterType = (type) => {
         payload: type
     }
 };
+
+export const filterOrigin = (origin) => {
+    return {
+        type: FILTER_ORIGIN,
+        payload: origin
+    }
+}
