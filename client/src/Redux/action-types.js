@@ -6,3 +6,4 @@ export const FILTER_ORDER = 'FILTER_ORDER';
 export const FILTER_TYPE = 'FILTER_TYPE';
 export const ORDER_BY_ATTACK = 'ORDER_BY_ATTACK';
 export const FILTER_ORIGIN = 'FILTER_ORIGIN';
+export const CREATE_POKE = 'CREATE_POKE';

@@ -1,4 +1,4 @@
-import { GET_POKES , GET_TYPES, GET_POKE_NAME, GET_POKE_ID, FILTER_ORDER, FILTER_TYPE, ORDER_BY_ATTACK, FILTER_ORIGIN} from "./action-types";
+import { GET_POKES , GET_TYPES, GET_POKE_NAME, GET_POKE_ID, FILTER_ORDER, FILTER_TYPE, ORDER_BY_ATTACK, FILTER_ORIGIN } from "./action-types";
 
 const initialState = {
     pokemons: [],
@@ -83,6 +83,9 @@ const reducer = (state = initialState , action) => {
                       ? [...state.allPokes]
                       : allPokeOriginFiltered
                 };
+
+
+            
     
         default:
             return { ...state };

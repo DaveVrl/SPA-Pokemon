@@ -3,6 +3,7 @@ import './App.css';
 import Cards from './components/Cards/Cards';
 import Detail from './components/Detail/Detail';
 import Nav from './components/Nav/Nav';
+import Form from './components/Form/Form';
 import { Routes , Route } from 'react-router-dom';
 
 
@@ -15,6 +16,7 @@ function App() {
       <Routes>
       <Route path="/home" element={<Cards/>}/>
       <Route path="/detail/:id" element={<Detail/>}/>
+      <Route path="/form" element={<Form/>}/>
       </Routes>
     </div>
   );

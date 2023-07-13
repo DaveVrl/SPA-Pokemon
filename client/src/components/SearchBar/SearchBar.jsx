@@ -40,7 +40,7 @@ const SearchBar = () => {
                     id={pokemon[0]?.id}
                     image={pokemon[0]?.image}
                     name={pokemon[0]?.name}
-                    type={pokemon[0]?.type?.map(type => type.name).join(' ')}
+                    type={pokemon[0]?.type ? pokemon[0]?.type?.map(type => type.name).join(' ') : pokemon[0]?.types?.map(type => type.type).join(' ')}
                     />
                     <button onClick={closeCard}>Close</button>
                     </div>

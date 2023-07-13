@@ -25,7 +25,10 @@ const Detail = () => {
                     <h2><span>Speed: </span>{pokemon?.speed}</h2>
                     <h2><span>Height: </span>{pokemon?.height}</h2>
                     <h2><span>Weight: </span>{pokemon?.weight}</h2>
-                    <h3><span>Types: </span>{pokemon?.type?.map(type => type.name).join(' ')}</h3>
+                    <h3><span>Types: </span>{
+                    pokemon?.type 
+                    ? pokemon?.type?.map(type => type.name).join(' ') 
+                    : pokemon?.types?.map(type => type.type).join(' ')}</h3>
                     </div>
                     <img src={pokemon?.image} alt={pokemon?.name} />
                 </div>

@@ -1,7 +1,8 @@
-const { Pokemon } = require("../db");
+const { Pokemon , Type } = require("../db");
 const { Op } = require("sequelize");
 const URL = "https://pokeapi.co/api/v2/pokemon";
 const axios = require("axios");
+
 
 const getPokemonByName = async (req , res) => {
     try {
@@ -15,8 +16,8 @@ const getPokemonByName = async (req , res) => {
         //DB
         const foundDB = await Pokemon.findAll({
             where:{ name:{
-                [Op.iLike]: `%${name}%`}
-            }
+                [Op.iLike]: `%${name}%`},
+            },include:[{model:Type}]      //Acá se trae la tabla
         });
         
         //API

@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { filterOrder , filterType , orderByAttack , filterOrigin } from "../../Redux/actions";
+import style from "./Filter.module.css";
 
 const Filter = () => {
     const dispatch = useDispatch();
@@ -21,25 +22,32 @@ const Filter = () => {
     }
 
     return (
-        <div>
+        <div className={style.container}>
+            <div className={style.containers}>
+                <label>Alphabetical Order:</label>
                 <select onChange={handleOrder}>
-                    {/* <option disabled >Alphabetical Order:</option> */}
                     <option value="A">Ascending</option>
                     <option value="D">Descending</option>
                 </select>
+            </div>
+            <div className={style.containers}>
+            <label>Order by Attack Points:</label>
                 <select onChange={handleAttack}>
-                    {/* <option disabled >Order by Attack Points:</option> */}
                     <option value="A">Ascending</option>
                     <option value="D">Descending</option>
                 </select>
+            </div>
+            <div className={style.containers}>
+                <label>Origin:</label>
                 <select onChange={filterByOrigin}>
-                    {/* <option disabled >Origin:</option> */}
                     <option value="all">All Origins</option>
                     <option value="api">API</option>
                     <option value="db">DataBase</option>
                 </select>
+            </div>
+            <div className={style.containers}>
+                <label>Type:</label>
                 <select onChange={handleFilter}>
-                    {/* <option disabled >Type:</option> */}
                     <option value="allTypes">All Types</option>
                     <option value="normal">Normal</option>
                     <option value="fighting">Fighting</option>
@@ -62,6 +70,7 @@ const Filter = () => {
                     <option value="unknown">Unknown</option>
                     <option value="shadow">Shadow</option>
                 </select>
+            </div>
             </div>
     )
 };

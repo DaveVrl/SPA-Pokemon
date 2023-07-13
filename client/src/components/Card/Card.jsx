@@ -2,7 +2,7 @@ import style from './Card.module.css';
 import { NavLink } from 'react-router-dom';
 
 
-const Card = ({id, name , image, type}) => {
+const Card = ({id, name , image, type }) => {
     return(
         <NavLink className={style.navLink} to={`/detail/${id}`}>
         <div className={style.card}>

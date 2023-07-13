@@ -1,0 +1,67 @@
+/*---------------------------FIRST------------------------------*/
+
+
+.container_n {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.container_n_individual { /*Aca se estiliza el input*/
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.container_3 {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.container_3_individual { /*Aca se estiliza el input*/
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    gap: 0.4rem;
+    margin-top: 10px;
+}
+
+input {
+    text-align: center;
+}
+
+/*---------------------------TYPE------------------------------*/
+.container_types {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.types {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 0.8rem;
+}
+
+.types_5 {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+}
+
+/*---------------------------    ------------------------------*/
+
+.container_imgLoad {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    row-gap: 0.8rem;
+}
+
+.create {
+    margin-top: 50px;
+}

@@ -1,6 +1,7 @@
 const { Pokemon , Type } = require("../db");
 const axios = require("axios");
 const URL = "https://pokeapi.co/api/v2/pokemon";
+const { Op } = require("sequelize");
 
 const postPokemon = async (req , res) => {
     try {
@@ -39,6 +40,15 @@ const postPokemon = async (req , res) => {
         if(pokemonExists) throw new Error(`El Pokemon ${name} ya existe.`);
 
 
+        const typeDB = await Type.findAll({
+            where: {
+                type: { [Op.in]: type }
+              }
+        });
+
+        console.log(typeDB);//puedo ver los type en la db
+        console.log(type)//veo los type que me llegan en ["",""]
+
         //Pasa validaciónes => Se crea
         const newPoke = await Pokemon.create({
                 name:name,
@@ -51,12 +61,14 @@ const postPokemon = async (req , res) => {
                 weight:weight
         });
 
-        const typeDB = await Type.findAll({
-            where: {type:type}
-        });
 
-        newPoke.setTypes(typeDB);
-
+        await Promise.all(
+            typeDB.map(async (type) => {
+              await newPoke.addType(type);
+            })
+          );
+        
+        console.log(newPoke)//se crea pero no tiene los type
         return res.status(200).json(newPoke);
 
     } catch (error) {

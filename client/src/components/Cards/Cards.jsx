@@ -35,15 +35,14 @@ const Cards = () => {
 
     return (
         <div className={style.container}>
+            
             <SearchBar/>
 
             <div className={style.buttons_container}>
-                
-                {currentPage !== 1 && (
-                <button onClick={() => handlePage(currentPage - 1)}>&#60;</button>)}
+                <button onClick={() => handlePage(currentPage - 1)} disabled={currentPage === 1}>&#60;</button>
+
                 <p>{currentPage}</p>
-                {hasNextPage && (
-                <button onClick={() => handlePage(currentPage + 1)}>&#62;</button>)}
+                <button onClick={() => handlePage(currentPage + 1)} disabled={!hasNextPage}>&#62;</button>
             </div>
 
             <Filter/>
@@ -57,8 +56,10 @@ const Cards = () => {
                             id={pokemon?.id}
                             image={pokemon?.image}
                             name={pokemon?.name}
-                            type={pokemon?.type?.map(type => type.name).join(' ')}
-                            />
+                            type={
+                                pokemon?.type 
+                                ? pokemon?.type?.map(type => type.name).join(' ') 
+                                : pokemon?.types?.map(type => type.type).join(' ')}/>
                         );
                     })
                 }
