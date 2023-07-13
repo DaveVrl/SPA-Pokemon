@@ -1,4 +1,21 @@
 .container {
-    background-color: greenyellow;
-    height: 40px;
+    background-color: rgb(48, 47, 47);
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.btn , .btn2 {
+    height: 34px;
+    cursor: pointer;
+}
+
+/* .btn2 {
+    visibility: hidden;
+} */
+
+.img {
+    height: 58px;
+    object-fit: contain;
 }

@@ -30,7 +30,7 @@ const SearchBar = () => {
     return (
         <div className={style.container}>
             <div>
-            <input type="search" onChange={(event) => handleChange(event)} />
+            <input type="search" onChange={(event) => handleChange(event)} placeholder="Search By Name..."/>
             <button type="submit" onClick={() => submitHandler(name)}>Buscar</button>
             </div>
             {showCard && pokemon.length > 0 && pokemon[0].name && (

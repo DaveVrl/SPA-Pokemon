@@ -1,4 +1,4 @@
-import { GET_POKES, GET_TYPES, GET_POKE_NAME, GET_POKE_ID, FILTER_ORDER, FILTER_TYPE, ORDER_BY_ATTACK, FILTER_ORIGIN, CREATE_POKE } from "./action-types";
+import { GET_POKES, GET_TYPES, GET_POKE_NAME, GET_POKE_ID, FILTER_ORDER, FILTER_TYPE, ORDER_BY_ATTACK, FILTER_ORIGIN, CREATE_POKE, GET_DB_POKES } from "./action-types";
 
 import axios from "axios";
 
@@ -107,11 +107,29 @@ export const createPoke = (pokeData) => {
         
         try {
             const { data } = await axios.post(endpoint, pokeData);
-            console.log(data)
+            
             if(!data) throw new Error("No se obtuvo la data");
 
             return dispatch({
                 type: CREATE_POKE,
+                payload: data
+            })
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+};
+
+export const getDbPokes = () => {
+    
+    const endpoint = "http://localhost:3001/db";
+
+    return async (dispatch) => {
+        try {
+            const { data } = await axios(endpoint);
+
+            return dispatch({
+                type: GET_DB_POKES,
                 payload: data
             })
         } catch (error) {

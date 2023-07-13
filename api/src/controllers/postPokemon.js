@@ -46,8 +46,8 @@ const postPokemon = async (req , res) => {
               }
         });
 
-        console.log(typeDB);//puedo ver los type en la db
-        console.log(type)//veo los type que me llegan en ["",""]
+        //console.log(typeDB);//puedo ver los type en la db
+        //console.log(type)//veo los type que me llegan en ["",""]
 
         //Pasa validaciónes => Se crea
         const newPoke = await Pokemon.create({
@@ -68,7 +68,7 @@ const postPokemon = async (req , res) => {
             })
           );
         
-        console.log(newPoke)//se crea pero no tiene los type
+        //console.log(newPoke)//
         return res.status(200).json(newPoke);
 
     } catch (error) {
