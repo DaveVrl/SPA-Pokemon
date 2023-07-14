@@ -11,7 +11,7 @@ const Nav = () => {
         <div className={style.container}>
             {location.pathname !== '/' &&<button onClick={()=> navigate("/home")} className={style.btn}>Home</button>}
 
-            <img className={style.img} src={logo} alt="#" />
+            {location.pathname !== '/' &&<img onDoubleClick={()=> navigate("/")} className={style.img} src={logo} alt="#" />}
 
             {location.pathname !== '/' &&<button onClick={()=> navigate("/form")} className={style.btn2}>Crear Pokemon</button>}
         </div>

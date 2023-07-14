@@ -1,7 +1,7 @@
 import style from "./Form.module.css";
 import { useState } from "react";
 import { useDispatch , useSelector } from "react-redux"
-import { createPoke , getDbPokes } from "../../Redux/actions";
+import { createPoke } from "../../Redux/actions";
 import validation from "./validation";
 import { useNavigate } from "react-router-dom";
 
@@ -27,7 +27,7 @@ const Form = () => {
         image: null,
     });
 
-console.log(pokeData)                                       //!!!!!!!!!!!!!!!! console.log
+console.log(pokeData)                                       
 
     const handleInputChange = (event) => {
         const { name , value } = event.target;

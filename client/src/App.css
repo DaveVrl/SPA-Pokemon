@@ -4,9 +4,18 @@
   text-align: center;
   min-height: 100vh;
   margin: 0 auto;
+  background-image:
+  linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+  url(./components/assets/fondo.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: fixed;
+
 }
+
 
 * {
   box-sizing: border-box;
   margin: 0;
 }
+
