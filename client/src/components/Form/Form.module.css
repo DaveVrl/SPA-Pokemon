@@ -16,7 +16,7 @@
 .container_3 {
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    gap: 1.6rem;
 }
 
 .container_3_individual { /*Aca se estiliza el input*/
@@ -26,9 +26,18 @@
     gap: 0.4rem;
     margin-top: 10px;
 }
-
+/*----------------------------INPUTS---------------------------*/
 input {
     text-align: center;
+}
+
+.container_3_individual input {
+    width: 116px;
+    
+}
+
+.container_n input {
+    width: 180px;
 }
 
 /*---------------------------TYPE------------------------------*/
