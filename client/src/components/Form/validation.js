@@ -1,8 +1,11 @@
-const validation = (pokeData) => {
+const validation = (pokeData , db , api) => {
     const errors = {};
+    //Aplico toLowerCase para evitar nombres repetidos con min o mayus
+    const dbName = db.map( el => el.name.toLowerCase());
+    const apiName = api.map(el => el.name.toLowerCase());
     
 //NAME
-    if(!/^[a-zA-Z]+$/.test(pokeData.name)){
+    if(!/^[a-zA-Z\s]+$/.test(pokeData.name)){
         errors.name = "Debes ingresar solo letras";
     }
     if(pokeData.name.length < 1 || pokeData.name.length > 25){
@@ -10,6 +13,12 @@ const validation = (pokeData) => {
     }
     if(!pokeData.name){
       errors.name = "Debes ingresar un nombre";
+    }
+    if(dbName.includes(pokeData.name.toLowerCase())){
+      errors.name = "El nombre ya existe";
+    }
+    if(apiName.includes(pokeData.name.toLowerCase())){
+      errors.name = "El nombre ya existe";
     }
 //HP
     if(pokeData.hp < 1 || pokeData.hp > 255){
@@ -48,6 +57,10 @@ const validation = (pokeData) => {
 //IMAGE
    if(!/^https?:\/\/.*\.(png|jpg|jpeg|svg)$/.test(pokeData.image)){
     errors.image = "Debes ingresar una URL válida, en formato PNG , JPG , JPEG o SVG";
+   }
+//TYPE
+   if (pokeData.type.length < 1 || pokeData.type.length > 2) {
+     errors.type = "Debes seleccionar 1 o 2 tipos";
    }
    return errors;
 };

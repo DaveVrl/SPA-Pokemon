@@ -1,14 +1,18 @@
 import style from "./Form.module.css";
-import { useState , useEffect } from "react";
-import { useDispatch } from "react-redux"
+import { useState } from "react";
+import { useDispatch , useSelector } from "react-redux"
 import { createPoke , getDbPokes } from "../../Redux/actions";
 import validation from "./validation";
-
+import { useNavigate } from "react-router-dom";
 
 const Form = () => {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     //Para manejar validations
     const[errors , setErrors] = useState({});
+    //Validation de name ya creado en DB
+    const db = useSelector(state => state.db);
+    const api = useSelector(state => state.pokemons)
 
 //Los seteo en undefined para que al enviarse no me haga conflicto en los datatypes
     const[pokeData , setPokeData] = useState({
@@ -23,12 +27,12 @@ const Form = () => {
         image: null,
     });
 
-console.log(pokeData)
+console.log(pokeData)                                       //!!!!!!!!!!!!!!!! console.log
 
     const handleInputChange = (event) => {
         const { name , value } = event.target;
         setPokeData({...pokeData, [name]: value});
-        setErrors(validation({...pokeData, [name]: value}));
+        setErrors(validation({...pokeData, [name]: value}, db , api));
     };
 
     const handleCheckboxChange = (event) => {
@@ -41,26 +45,24 @@ console.log(pokeData)
           const index = type.indexOf(value);
           type.splice(index, 1);
         }
-      
+        //Seteo los erros para que se actualicen y se quite el msj de error
         setPokeData({ ...pokeData, type: [...type] });
-    };
+        setErrors(validation({ ...pokeData, type: [...type] }, db, api));
+      };
 
 
     const handleSubmit = async (event) => {
         event.preventDefault();
       
         try {
-          // Valido si hay duplicados
-          const valid = await dispatch(getDbPokes(pokeData));
+               
+          const create = await dispatch(createPoke(pokeData));
+          console.log(create);
 
-          console.log(valid);//Controlo lo que me viene en valid
-
-          if (valid.payload.length === 1) return console.error("El Pokemon ya existe");
+          if (!create) {
+             return alert("El Pokémon ya existe en la API");
+          }                         
           
-          // Si no hay, despacho
-          dispatch(createPoke(pokeData));
-          console.log(pokeData);
-      
           // Limpio el estado local
           setPokeData({
             name: "",
@@ -75,11 +77,25 @@ console.log(pokeData)
           });
       
           // Limpio el form en pantalla
-        //   event.target.reset();
+          event.target.reset();
+          navigate("/home");
+          
+          
         } catch (error) {
           return console.error(error.message);
         }
       };
+      //Manejo button condicionado
+      const buttonDisabled =
+      !pokeData.name ||
+      !pokeData.hp ||
+      !pokeData.attack ||
+      !pokeData.defense ||
+      !pokeData.type.length ||
+      !pokeData.image ||
+      pokeData.type.length < 1 ||
+      pokeData.type.length > 2 ||
+      Object.keys(errors).length > 0;
 
 
     return (
@@ -133,76 +149,77 @@ console.log(pokeData)
                     <div className={style.types}>
                         <div className={style.types_5}>
                         <label>Normal</label>
-                            <input type="checkbox" value="normal" onChange={handleCheckboxChange}/>
+                            <input type="checkbox" value="normal" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("normal")}/>
 
                         <label>Fighting</label>
-                            <input type="checkbox" value="fighting" onChange={handleCheckboxChange}/>
+                            <input type="checkbox" value="fighting" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("fighting")}/>
                         
                         <label>Flying</label>
-                            <input type="checkbox" value="flying" onChange={handleCheckboxChange}/>
+                            <input type="checkbox" value="flying" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("flying")}/>
                         
                         <label>Poison</label>
-                            <input type="checkbox" value="poison" onChange={handleCheckboxChange}/>
+                            <input type="checkbox" value="poison" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("poison")}/>
                         
                         <label>Ground</label>
-                            <input type="checkbox" value="ground" onChange={handleCheckboxChange}/>
+                            <input type="checkbox" value="ground" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("ground")}/>
                         </div>
                         <div className={style.types_5}>
                         <label>Rock</label>
-                            <input type="checkbox" value="rock" onChange={handleCheckboxChange}/>
+                            <input type="checkbox" value="rock" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("rock")}/>
                         
                         <label>Bug</label>
-                            <input type="checkbox" value="bug" onChange={handleCheckboxChange}/>
+                            <input type="checkbox" value="bug" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("bug")}/>
                         
                         <label>Ghost</label>
-                            <input type="checkbox" value="ghost" onChange={handleCheckboxChange}/>
+                            <input type="checkbox" value="ghost" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("ghost")}/>
                         
                         <label>Steel</label>
-                            <input type="checkbox" value="steel" onChange={handleCheckboxChange}/>
+                            <input type="checkbox" value="steel" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("steel")}/>
                         
                         <label>Fire</label>
-                            <input type="checkbox" value="fire" onChange={handleCheckboxChange}/>
+                            <input type="checkbox" value="fire" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("fire")}/>
                         </div>
                         <div className={style.types_5}>
                         <label>Water</label>
-                            <input type="checkbox" value="water" onChange={handleCheckboxChange}/>
+                            <input type="checkbox" value="water" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("water")}/>
                         
                         <label>Grass</label>
-                            <input type="checkbox" value="grass" onChange={handleCheckboxChange}/>
+                            <input type="checkbox" value="grass" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("grass")}/>
                         
                         <label>Electric</label>
-                            <input type="checkbox" value="electric" onChange={handleCheckboxChange}/>
+                            <input type="checkbox" value="electric" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("electric")}/>
                         
                         <label>Psychic</label>
-                            <input type="checkbox" value="psychic" onChange={handleCheckboxChange}/>
+                            <input type="checkbox" value="psychic" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("psychic")}/>
                         
                         <label>Ice</label>
-                            <input type="checkbox" value="ice" onChange={handleCheckboxChange}/>
+                            <input type="checkbox" value="ice" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("ice")}/>
                         </div>
                         <div className={style.types_5}>
                         <label>Dragon</label>
-                            <input type="checkbox" value="dragon" onChange={handleCheckboxChange}/>
+                            <input type="checkbox" value="dragon" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("dragon")}/>
                         
                         <label>Dark</label>
-                            <input type="checkbox" value="dark" onChange={handleCheckboxChange}/>
+                            <input type="checkbox" value="dark" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("dark")}/>
                         
                         <label>Fairy</label>
-                            <input type="checkbox" value="fairy" onChange={handleCheckboxChange}/>
+                            <input type="checkbox" value="fairy" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("fairy")}/>
                         
                         <label>Unknown</label>
-                            <input type="checkbox" value="unknown" onChange={handleCheckboxChange}/>
+                            <input type="checkbox" value="unknown" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("unknown")}/>
                         
                         <label>Shadow</label>
-                            <input type="checkbox" value="shadow" onChange={handleCheckboxChange}/>
+                            <input type="checkbox" value="shadow" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("shadow")}/>
                         </div>
                     </div>
+                    {errors.type && <p>{errors.type}</p>}
                 </div>
                 <div className={style.container_imgLoad}>
                     <label htmlFor="">Put your Pokemon's URL image:</label>
                     <input name="image" type="url" onChange={handleInputChange} placeholder="Your image link here..." />
                     {errors.image && <p>{errors.image}</p>}
                 </div>
-                <button className={style.create} type="submit">Create</button>
+                <button className={style.create} type="submit" disabled={buttonDisabled}>Create</button>
             </form>
         </div>
     )

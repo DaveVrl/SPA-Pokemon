@@ -4,6 +4,7 @@ import Cards from './components/Cards/Cards';
 import Detail from './components/Detail/Detail';
 import Nav from './components/Nav/Nav';
 import Form from './components/Form/Form';
+import LandingPage from './components/LandingPage/LandingPage';
 import { Routes , Route } from 'react-router-dom';
 
 
@@ -14,6 +15,7 @@ function App() {
     <div className="App">
       <Nav/>
       <Routes>
+      <Route path="/" element={<LandingPage/>}/>
       <Route path="/home" element={<Cards/>}/>
       <Route path="/detail/:id" element={<Detail/>}/>
       <Route path="/form" element={<Form/>}/>
