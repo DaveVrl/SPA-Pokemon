@@ -35,7 +35,7 @@
 
 .containerImg img { 
     -webkit-user-drag: none;
-    max-width: 260px;
+    width: 260px;
 }
 
 .h3Type {
