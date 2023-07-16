@@ -6,9 +6,9 @@ const Card = ({id, name , image, type }) => {
     return(
         <NavLink className={style.navLink} to={`/detail/${id}`}>
         <div className={style.card}>
+            <h1>{name.charAt(0).toUpperCase() + name.substring(1)}</h1>
             <img className={style.img} src={image} alt="#" />
-            <h1>{name}</h1>
-            <h3>{type}</h3>
+            <h2>Type: {type}</h2>
         </div>
         </NavLink>
     )

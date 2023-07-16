@@ -6,16 +6,39 @@ const Nav = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
+
+    if (location.pathname === "/") {
+        return null; // No renderizar nada cuando la ubicación sea "/"
+      }
     
-    return (
+      return (
         <div className={style.container}>
-            {location.pathname !== '/' &&<button onClick={()=> navigate("/home")} className={style.btn}>Home</button>}
-
-            {location.pathname !== '/' &&<img onDoubleClick={()=> navigate("/")} className={style.img} src={logo} alt="#" />}
-
-            {location.pathname !== '/' &&<button onClick={()=> navigate("/form")} className={style.btn2}>Crear Pokemon</button>}
+          <button
+            onClick={() => navigate("/home")}
+            className={`${style.btn} ${
+              location.pathname === "/home" ? style.hidden : ""
+            }`}
+          >
+            Home
+          </button>
+    
+          <img
+            onDoubleClick={() => navigate("/")}
+            className={style.img}
+            src={logo}
+            alt="#"
+          />
+    
+          <button
+            onClick={() => navigate("/form")}
+            className={`${style.btn2} ${
+              location.pathname === "/form" ? style.hidden : ""
+            }`}
+          >
+            Create Pokémon
+          </button>
         </div>
-    )
-};
+      );
+    };
 
 export default Nav;

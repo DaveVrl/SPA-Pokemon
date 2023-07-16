@@ -62,8 +62,8 @@ const Cards = () => {
                             name={pokemon?.name}
                             type={
                                 pokemon?.type 
-                                ? pokemon?.type?.map(type => type.name).join(' ') 
-                                : pokemon?.types?.map(type => type.type).join(' ')}/>
+                                ? pokemon?.type?.map(type => type.name.charAt(0).toUpperCase() + type.name.substring(1)).join(' - ') 
+                                : pokemon?.types?.map(type => type.type.charAt(0).toUpperCase() + type.type.substring(1)).join(' - ')}/>
                         );
                     })
                 }

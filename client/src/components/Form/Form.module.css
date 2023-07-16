@@ -1,10 +1,24 @@
 /*---------------------------FIRST------------------------------*/
 
+.containerGeneral {
+    display: flex;
+    justify-content: center;
+}
+
+.containerGeneral label {
+    user-select: none;
+}
+
+
 
 .container_n {
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    color: whitesmoke;
+    text-shadow: 1px 1px 2px black;
+    font-size: 18px;
+    font-weight: 600;
 }
 
 .container_n_individual { /*Aca se estiliza el input*/
@@ -17,6 +31,10 @@
     display: flex;
     justify-content: center;
     gap: 1.6rem;
+    color: whitesmoke;
+    text-shadow: 1px 1px 2px black;
+    font-size: 18px;
+    font-weight: 600;
 }
 
 .container_3_individual { /*Aca se estiliza el input*/
@@ -26,6 +44,7 @@
     gap: 0.4rem;
     margin-top: 10px;
 }
+
 /*----------------------------INPUTS---------------------------*/
 input {
     text-align: center;
@@ -33,11 +52,14 @@ input {
 
 .container_3_individual input {
     width: 116px;
+    cursor: pointer;
     
 }
 
 .container_n input {
     width: 180px;
+    cursor: pointer;
+    align-self: center;
 }
 
 /*---------------------------TYPE------------------------------*/
@@ -46,6 +68,8 @@ input {
     flex-direction: column;
     justify-content: center;
     margin-top: 30px;
+    color: whitesmoke;
+    text-shadow: 1px 1px 2px black;
 }
 
 .types {
@@ -61,16 +85,68 @@ input {
     row-gap: 0.5rem;
 }
 
-/*---------------------------    ------------------------------*/
+.container_types input {
+    cursor: pointer;
+}
+
+.typeTitle {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/*--------------------------- IMG ------------------------------*/
 
 .container_imgLoad {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 30px;
     row-gap: 0.8rem;
+    color: whitesmoke;
+    text-shadow: 1px 1px 2px black;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 30px;
+}
+/*--------------------------- BUTTON ------------------------------*/
+.create {
+    margin-top: 40px;
+    height: 44px;
+    width: 140px;
+    cursor: pointer;
+    border-radius: 16px;
+    background-color: #fbcb1fe0;
+    color: white;
+    border: inherit 1px;
+    border-color: whitesmoke;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px black;
+    user-select: none;
+    margin-bottom: 50px;
 }
 
-.create {
-    margin-top: 50px;
+.create:hover {
+    color: #fbcb1fe0;
+    background-color: white;
+    border: none;
+    transform: scale(1.03);
+    box-shadow: 2px 6px 40px #ffffffe0;
+}
+
+.create:active {
+    transform: scale(1) scale(1.1);
+    color: white;
+    background: #fbcb1fe0;  
+}
+/*--------------------------- ERRORS ------------------------------*/
+
+.containerGeneral p {
+    font-size: 15px;
+    font-weight: 400;
+    text-shadow: none;
+    color: rgb(255, 0, 0);
+    text-shadow: 0.5px 0.5px 1px rgb(56, 19, 19);
+}
+
+.errTyp {
+    margin-top: 10px;
 }

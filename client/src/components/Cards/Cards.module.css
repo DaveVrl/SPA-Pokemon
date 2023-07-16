@@ -11,7 +11,7 @@
     justify-content: center;
     gap: 2rem;
     text-align: center;
-    margin: 20px 0;
+    margin: 20px 0 40px;
 }
 
 .buttons_container {
@@ -19,3 +19,41 @@
     justify-content: space-between;
 }
 
+.buttons_container {
+    margin-top: 10px;
+}
+
+.buttons_container p {
+    color: whitesmoke;
+    font-size: 20px;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px black;
+    user-select: none;
+}
+
+.buttons_container button {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    color: whitesmoke;
+    background-color: #fbcb1fe0;
+    border: 1px solid white;
+    text-shadow: 1px 1px 2px black;
+    user-select: none;
+}
+
+.buttons_container button:hover {
+    color: #fbcb1fe0;
+    background-color: white;
+    border: none;
+    transform: scale(1.03);
+    box-shadow: 2px 6px 40px #ffffffe0;
+}
+
+.buttons_container button:active {
+    transform: scale(1) scale(1.1);
+    color: white;
+    background: #fbcb1fe0;  
+}

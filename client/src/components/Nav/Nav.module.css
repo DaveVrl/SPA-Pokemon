@@ -1,14 +1,35 @@
 .container {
     background-color: rgb(48, 47, 47);
-    height: 60px;
+    height: 80px;
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
 .btn , .btn2 {
-    height: 34px;
+    height: 44px;
+    width: 140px;
     cursor: pointer;
+    border-radius: 16px;
+    background-color: #fbcb1fe0;
+    color: white;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px black;
+    user-select: none;
+}
+
+.btn:hover , .btn2:hover {
+    color: #fbcb1fe0;
+    background-color: white;
+    border: none;
+    transform: scale(1.03);
+    box-shadow: 2px 6px 40px #ffffffe0;
+}
+
+.btn:active , .btn2:active {
+    transform: scale(1) scale(1.1);
+    color: white;
+    background: #fbcb1fe0;  
 }
 
 /* .btn2 {
@@ -16,6 +37,13 @@
 } */
 
 .img {
-    height: 58px;
+    height: 70px;
     object-fit: contain;
+    user-select: none;
+    -webkit-user-drag: none;
+    cursor: pointer;
 }
+
+.hidden {
+    visibility: hidden;
+  }

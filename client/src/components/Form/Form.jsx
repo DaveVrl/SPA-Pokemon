@@ -99,7 +99,7 @@ console.log(pokeData)
 
 
     return (
-        <div>
+        <div className={style.containerGeneral}>
             <form onSubmit={handleSubmit}>
                 <div className={style.container_n}>
                     <div className={style.container_n_individual}>
@@ -144,7 +144,7 @@ console.log(pokeData)
                 </div>
 
                 <div className={style.container_types}>
-                    <label>Type:</label>
+                    <label className={style.typeTitle}>Type:</label>
 
                     <div className={style.types}>
                         <div className={style.types_5}>
@@ -212,7 +212,7 @@ console.log(pokeData)
                             <input type="checkbox" value="shadow" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("shadow")}/>
                         </div>
                     </div>
-                    {errors.type && <p>{errors.type}</p>}
+                    {errors.type && <p className={style.errTyp}>{errors.type}</p>}
                 </div>
                 <div className={style.container_imgLoad}>
                     <label htmlFor="">Put your Pokemon's URL image:</label>
