@@ -34,8 +34,8 @@ const Detail = () => {
                     <h2><span>Weight: </span>{pokemon?.weight}</h2>
                     <h3 className={style.h3Type}><span>Types: </span>{
                     pokemon?.type 
-                    ? pokemon?.type?.map(type => type.name.charAt(0).toUpperCase() + type.name.substring(1)).join(' ') 
-                    : pokemon?.types?.map(type => type.type.charAt(0).toUpperCase() + type.type.substring(1)).join(' ')}</h3>
+                    ? pokemon?.type?.map(type => type.name.charAt(0).toUpperCase() + type.name.substring(1)).join(' - ') 
+                    : pokemon?.types?.map(type => type.type.charAt(0).toUpperCase() + type.type.substring(1)).join(' - ')}</h3>
                     </div>
                     <div className={style.containerImg}>
                     <img src={pokemon?.image} alt={pokemon?.name} />
