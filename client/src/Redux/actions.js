@@ -1,4 +1,4 @@
-import { GET_POKES, GET_TYPES, GET_POKE_NAME, GET_POKE_ID, FILTER_ORDER, FILTER_TYPE, ORDER_BY_ATTACK, FILTER_ORIGIN, CREATE_POKE, GET_DB_POKES } from "./action-types";
+import { GET_POKES, GET_TYPES, GET_POKE_NAME, GET_POKE_ID, FILTER_ORDER, FILTER_TYPE, ORDER_BY_ATTACK, FILTER_ORIGIN, CREATE_POKE, GET_DB_POKES, CLEAR_POKEMON, CLEAR_DETAIL } from "./action-types";
 
 import axios from "axios";
 
@@ -137,3 +137,17 @@ export const getDbPokes = () => {
         }
     }
 };
+
+export const clearPokemon = () => { //name
+    return {
+        type: CLEAR_POKEMON,
+        payload: {}
+    }
+};
+
+export const clearDetail = () => {
+    return {
+        type: CLEAR_DETAIL,
+        payload: {}
+    }
+}

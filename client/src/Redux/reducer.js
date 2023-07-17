@@ -1,9 +1,9 @@
-import { GET_POKES , GET_TYPES, GET_POKE_NAME, GET_POKE_ID, FILTER_ORDER, FILTER_TYPE, ORDER_BY_ATTACK, FILTER_ORIGIN, CREATE_POKE, GET_DB_POKES } from "./action-types";
+import { GET_POKES , GET_TYPES, GET_POKE_NAME, GET_POKE_ID, FILTER_ORDER, FILTER_TYPE, ORDER_BY_ATTACK, FILTER_ORIGIN, CREATE_POKE, GET_DB_POKES, CLEAR_POKEMON, CLEAR_DETAIL } from "./action-types";
 
 const initialState = {
-    pokemons: [],
+    pokemons: [], 
     types: [],
-    pokemon: [],
+    pokemon: [], //name
     id: [],
     allPokes: [],
     db:[]
@@ -99,6 +99,18 @@ const reducer = (state = initialState , action) => {
                 return {
                     ...state,
                     db: action.payload
+                };
+
+            case CLEAR_POKEMON: //name
+                return {
+                    ...state,
+                    pokemon: action.payload
+                };
+
+            case CLEAR_DETAIL:
+                return {
+                    ...state,
+                    id: action.payload
                 };
         
             

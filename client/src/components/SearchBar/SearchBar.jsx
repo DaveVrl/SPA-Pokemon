@@ -1,4 +1,4 @@
-import { getPokeName } from "../../Redux/actions";
+import { getPokeName , clearPokemon } from "../../Redux/actions";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../Card/Card";
@@ -21,6 +21,8 @@ const SearchBar = () => {
     const submitHandler = () => {
         dispatch(getPokeName(name));
         setShowCard(true);
+        setName("");
+        dispatch(clearPokemon());
     }
 
     const closeCard = () => {
@@ -31,7 +33,7 @@ const SearchBar = () => {
         <div className={style.container}>
             <p className={style.pSearch}>Search your favorite Pokémon!</p>
             <div className={style.barBtn}>
-            <input className={style.searchInput} type="search" onChange={(event) => handleChange(event)} placeholder="Search By Name..."/>
+            <input value={name} className={style.searchInput} type="search" onChange={(event) => handleChange(event)} placeholder="Search By Name..."/>
             <button className={style.searchBtn} type="submit" onClick={() => submitHandler(name)}>&#128269;</button>
             </div>
             {showCard && pokemon.length > 0 && pokemon[0].name && (

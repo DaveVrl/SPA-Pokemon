@@ -24,9 +24,7 @@ const getAllPokemons = async (req, res) => {
                 let { type } = obj;
                 let { name } = type;
                 return {name};
-            }); 
-            
-        
+            });
             return {id, name, image, hp, attack, defense, speed, height, weight, type};
         }));
 

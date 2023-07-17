@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getPokeId } from "../../Redux/actions";
+import { getPokeId , clearDetail } from "../../Redux/actions";
 import { useParams } from "react-router-dom";
 import style from "./Detail.module.css";
 
@@ -10,7 +10,12 @@ const Detail = () => {
     const { id } = useParams();
     
     useEffect(() => {
-        dispatch(getPokeId(id))
+        dispatch(getPokeId(id));
+
+        return () => { //se llama solo una vez cuando se desmonta componente
+            dispatch(clearDetail());
+        }
+
     }, [dispatch , id]);
 
     return (

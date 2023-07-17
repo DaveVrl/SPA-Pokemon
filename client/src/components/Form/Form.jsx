@@ -8,6 +8,9 @@ import { useNavigate } from "react-router-dom";
 const Form = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    const [isLoading , setIsLoading] = useState(false);
+
     //Para manejar validations
     const[errors , setErrors] = useState({});
     //Validation de name ya creado en DB
@@ -55,11 +58,12 @@ console.log(pokeData)
         event.preventDefault();
       
         try {
-               
+          setIsLoading(true);     
           const create = await dispatch(createPoke(pokeData));
           console.log(create);
 
           if (!create) {
+            setIsLoading(false);
              return alert("El Pokémon ya existe en la API");
           }                         
           
@@ -82,6 +86,7 @@ console.log(pokeData)
           
           
         } catch (error) {
+          setIsLoading(false);
           return console.error(error.message);
         }
       };
@@ -219,7 +224,9 @@ console.log(pokeData)
                     <input name="image" type="url" onChange={handleInputChange} placeholder="Your image link here..." />
                     {errors.image && <p>{errors.image}</p>}
                 </div>
-                <button className={style.create} type="submit" disabled={buttonDisabled}>Create</button>
+                <button className={style.create} type="submit" 
+                disabled={buttonDisabled} 
+                style={{ cursor: isLoading ? "wait" : "pointer" }}>Create</button>
             </form>
         </div>
     )
