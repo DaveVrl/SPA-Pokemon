@@ -7,7 +7,7 @@ const getPokemonById = async (req , res) => {
         const { id } = req.params;
 
         if(isNaN(id)) {
-            const foundDB = await Pokemon.findByPk(id,{include:Type})
+            const foundDB = await Pokemon.findByPk(id,{include:Type, distinct: true})
             
             if(foundDB) return res.status(200).json(foundDB);
 
