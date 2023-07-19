@@ -1,7 +1,7 @@
 import style from "./Form.module.css";
 import { useState } from "react";
 import { useDispatch , useSelector } from "react-redux"
-import { createPoke } from "../../Redux/actions";
+import { createPoke , getDbPokes , getPokes } from "../../Redux/actions";
 import validation from "./validation";
 import { useNavigate } from "react-router-dom";
 
@@ -82,6 +82,8 @@ console.log(pokeData)
       
           // Limpio el form en pantalla
           event.target.reset();
+          dispatch(getDbPokes()); //obtengo todo en el Home
+          dispatch(getPokes());   //
           navigate("/home");
           
           

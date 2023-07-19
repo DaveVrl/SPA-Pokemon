@@ -1,4 +1,4 @@
-import { GET_POKES , GET_TYPES, GET_POKE_NAME, GET_POKE_ID, FILTER_ORDER, FILTER_TYPE, ORDER_BY_ATTACK, FILTER_ORIGIN, CREATE_POKE, GET_DB_POKES, CLEAR_POKEMON, CLEAR_DETAIL } from "./action-types";
+import { GET_POKES , GET_TYPES, GET_POKE_NAME, GET_POKE_ID, FILTER_ORDER, FILTER_TYPE, ORDER_BY_ATTACK, FILTER_ORIGIN, CREATE_POKE, GET_DB_POKES, CLEAR_POKEMON, CLEAR_DETAIL, SET_CURRENT_PAGE } from "./action-types";
 
 const initialState = {
     pokemons: [], 
@@ -6,7 +6,8 @@ const initialState = {
     pokemon: [], //name
     id: [],
     allPokes: [],
-    db:[]
+    db:[],
+    currentPage: 1
 }
 
 const reducer = (state = initialState , action) => {
@@ -63,11 +64,16 @@ const reducer = (state = initialState , action) => {
                 const pokeApiFilter = state.allPokes.filter(pokemon => pokemon.type && pokemon.type.find(type => type.name === action.payload));
                 const pokeDbFilter = state.db.filter(pokemon => pokemon.types && pokemon.types.find(type => type.type === action.payload));
   
-                const filteredPokemons = [...pokeApiFilter, ...pokeDbFilter];
-  
+                let filteredPokemons = [...pokeApiFilter, ...pokeDbFilter];
+                //evitar que me quede el estado vacío
+                if(filteredPokemons.length === 0) return {
+                    ...state,
+                    pokemons: action.payload === "allTypes" ? [...state.allPokes] : [...state.pokemons]} 
+            
                 return {
                   ...state,
-                  pokemons: action.payload === "allTypes" ? [...state.allPokes] : filteredPokemons
+                  pokemons: action.payload === "allTypes" ? [...state.allPokes] : filteredPokemons,
+                  currentPage: 1
                 };
 
 
@@ -81,12 +87,23 @@ const reducer = (state = initialState , action) => {
                 if(action.payload === "db") {
                      allPokeOriginFiltered = state.allPokes.filter(pokemon => typeof pokemon.id === 'string')
                 }
+                //evitar que me quede el estado vacío
+                if(allPokeOriginFiltered === undefined) return {
+                    ...state,
+                    pokemons: 
+                    action.payload === "all"
+                    ? [...state.allPokes]
+                    : [...state.pokemons],
+                    currentPage: 1
+                }
+                
                 return {
                   ...state,
                   pokemons:
                     action.payload === "all"
                       ? [...state.allPokes]
-                      : allPokeOriginFiltered
+                      : allPokeOriginFiltered,
+                  currentPage: 1
                 };
 
             case CREATE_POKE:
@@ -111,6 +128,12 @@ const reducer = (state = initialState , action) => {
                 return {
                     ...state,
                     id: action.payload
+                };
+
+            case SET_CURRENT_PAGE:
+                return {
+                    ...state,
+                    currentPage: action.payload
                 };
         
             

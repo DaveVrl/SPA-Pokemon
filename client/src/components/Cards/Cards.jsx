@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import Card from '../Card/Card';
 import SearchBar from '../SearchBar/SearchBar'
 import Filter from '../Filter/Filter';
-import { getPokes , getDbPokes } from '../../Redux/actions';
+import { getPokes , getDbPokes , setCurrentPage } from '../../Redux/actions';
 import style from './Cards.module.css';
 
 const Cards = () => {
@@ -12,13 +12,15 @@ const Cards = () => {
     const allPokemons = useSelector(state => state.pokemons);
 
     useEffect(() => {
-        dispatch(getPokes())
-        dispatch(getDbPokes())
-    }, [dispatch]);
+        if (allPokemons.length === 0) {
+        dispatch(getPokes());
+        dispatch(getDbPokes());
+        }
+    }, [dispatch, allPokemons]);
 
 //---------------------------------------------------------
 
-    const [currentPage , setCurrentPage] = useState(1);
+    const currentPage = useSelector(state => state.currentPage);
 
 
 //------------------------------------------------ PAGINADO
@@ -31,8 +33,8 @@ const Cards = () => {
     
     
     const handlePage = (pag)=>{
-        setCurrentPage(pag)
-    }
+        dispatch(setCurrentPage(pag));
+    };
 
 //---------------------------------------------------------
 
