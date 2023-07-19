@@ -1,4 +1,4 @@
-import { GET_POKES, GET_TYPES, GET_POKE_NAME, GET_POKE_ID, FILTER_ORDER, FILTER_TYPE, ORDER_BY_ATTACK, FILTER_ORIGIN, CREATE_POKE, GET_DB_POKES, CLEAR_POKEMON, CLEAR_DETAIL, SET_CURRENT_PAGE } from "./action-types";
+import { GET_POKES, GET_TYPES, GET_POKE_NAME, GET_POKE_ID, FILTER_ORDER, FILTER_TYPE, ORDER_BY_ATTACK, FILTER_ORIGIN, CREATE_POKE, GET_DB_POKES, CLEAR_POKEMON, CLEAR_DETAIL, SET_CURRENT_PAGE, SET_SHOW_CARD } from "./action-types";
 
 import axios from "axios";
 
@@ -156,5 +156,12 @@ export const setCurrentPage = (page) => {
     return {
         type: SET_CURRENT_PAGE,
         payload: page
+    }
+};
+
+export const setShowCard = (boolean) => {
+    return {
+        type: SET_SHOW_CARD,
+        payload: boolean
     }
 };

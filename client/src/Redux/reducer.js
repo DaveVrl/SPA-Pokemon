@@ -1,4 +1,4 @@
-import { GET_POKES , GET_TYPES, GET_POKE_NAME, GET_POKE_ID, FILTER_ORDER, FILTER_TYPE, ORDER_BY_ATTACK, FILTER_ORIGIN, CREATE_POKE, GET_DB_POKES, CLEAR_POKEMON, CLEAR_DETAIL, SET_CURRENT_PAGE } from "./action-types";
+import { GET_POKES , GET_TYPES, GET_POKE_NAME, GET_POKE_ID, FILTER_ORDER, FILTER_TYPE, ORDER_BY_ATTACK, FILTER_ORIGIN, CREATE_POKE, GET_DB_POKES, CLEAR_POKEMON, CLEAR_DETAIL, SET_CURRENT_PAGE, SET_SHOW_CARD } from "./action-types";
 
 const initialState = {
     pokemons: [], 
@@ -7,7 +7,8 @@ const initialState = {
     id: [],
     allPokes: [],
     db:[],
-    currentPage: 1
+    currentPage: 1,
+    showCard: false
 }
 
 const reducer = (state = initialState , action) => {
@@ -135,6 +136,12 @@ const reducer = (state = initialState , action) => {
                     ...state,
                     currentPage: action.payload
                 };
+
+            case SET_SHOW_CARD:
+                return {
+                    ...state,
+                    showCard: action.payload
+                }
         
             
     

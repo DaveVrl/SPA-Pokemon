@@ -1,4 +1,4 @@
-import { getPokeName , clearPokemon } from "../../Redux/actions";
+import { getPokeName , clearPokemon , setShowCard } from "../../Redux/actions";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../Card/Card";
@@ -9,9 +9,10 @@ const SearchBar = () => {
     const dispatch = useDispatch();
 
     const pokemon = useSelector(state => state.pokemon);
+    const showCard = useSelector(state => state.showCard);
 
     const [name , setName] = useState("");
-    const [showCard, setShowCard] = useState(false);
+    
 
     const handleChange = (event) => {
         event.preventDefault();
@@ -20,13 +21,14 @@ const SearchBar = () => {
 
     const submitHandler = () => {
         dispatch(getPokeName(name));
-        setShowCard(true);
+        dispatch(setShowCard(true));
         setName("");
-        dispatch(clearPokemon());
+        
     }
 
     const closeCard = () => {
-        setShowCard(false);
+        dispatch(setShowCard(false));
+        dispatch(clearPokemon());
     }
 
     return (
