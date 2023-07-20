@@ -5,7 +5,7 @@ const validation = (pokeData, db, api) => {
   const apiName = api.map((el) => el.name.toLowerCase());
 
   // NAME
-  if (!/^[a-zA-Z\s]+$/.test(pokeData.name)) {
+  if (!/^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/.test(pokeData.name)) {
     errors.name = "You must enter only letters.";
   }
   if (pokeData.name.length < 1 || pokeData.name.length > 25) {
