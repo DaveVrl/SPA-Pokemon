@@ -46,17 +46,17 @@ const validation = (pokeData, db, api) => {
   }
 
   // SPEED
-  if (pokeData.speed < 1 || pokeData.speed > 255) {
+  if (pokeData.speed !== "" && (pokeData.speed < 1 || pokeData.speed > 255)) {
     errors.speed = "Allowed range is from 1 to 255.";
   }
 
   // HEIGHT
-  if (pokeData.height < 0.1 || pokeData.height > 328.1) {
+  if (pokeData.height !== "" && (pokeData.height < 0.1 || pokeData.height > 328.1)) {
     errors.height = "Allowed range is from 0.1 to 328.1 feet.";
   }
 
   // WEIGHT
-  if (pokeData.weight < 0.1 || pokeData.weight > 999.9) {
+  if (pokeData.weight !== "" && (pokeData.weight < 0.1 || pokeData.weight > 999.9)) {
     errors.weight = "Allowed range is from 0.1 to 999.9 pounds.";
   }
 
