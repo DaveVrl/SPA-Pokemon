@@ -1,5 +1,5 @@
 import { useDispatch , useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Card from '../Card/Card';
 import SearchBar from '../SearchBar/SearchBar'
 import Filter from '../Filter/Filter';
@@ -65,7 +65,8 @@ const Cards = () => {
                             type={
                                 pokemon?.type 
                                 ? pokemon?.type?.map(type => type.name.charAt(0).toUpperCase() + type.name.substring(1)).join(' - ') 
-                                : pokemon?.types?.map(type => type.type.charAt(0).toUpperCase() + type.type.substring(1)).join(' - ')}
+                                : pokemon?.types?.map(type => type.type.charAt(0).toUpperCase() + type.type.substring(1)).join(' - ')
+                            }
                             attack={pokemon?.attack}
                             />
                         );
