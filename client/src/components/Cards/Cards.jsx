@@ -36,7 +36,7 @@ const Cards = () => {
         dispatch(setCurrentPage(pag));
     };
 
-//--------------------------------------------------------- NUMEROS DE PAGINADO
+//------------------------------------- NUMEROS DE PAGINADO
 
     const totalItems = allPokemons.length;
     const totalPages = Math.ceil(totalItems / itemsPerPage);

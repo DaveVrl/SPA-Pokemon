@@ -60,20 +60,25 @@
     background: #fbcb1fe0;  
 }
 
-
+.page_numbers {
+    display: flex;
+}
 
 .page_numbers button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 50%;
     cursor: pointer;
     border: 1px solid white;
     height: 26px;
     width: 26px;
     font-size: 14px;
-    margin: 1px;
+    margin: 1.2px;
     user-select: none;
 }
 
 .active_page {
     background-color: #333;
     color: #fff;
-  }
+}
