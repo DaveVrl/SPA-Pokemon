@@ -35,12 +35,16 @@ const Cards = () => {
     const handlePage = (pag)=>{
         dispatch(setCurrentPage(pag));
     };
+
 //--------------------------------------------------------- NUMEROS DE PAGINADO
 
     const totalItems = allPokemons.length;
     const totalPages = Math.ceil(totalItems / itemsPerPage);
-    const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
-
+    const pageRange = 10; // Puedes ajustar este valor según tus necesidades
+    const currentPageGroup = Math.ceil(currentPage / pageRange);
+    const startPage = (currentPageGroup - 1) * pageRange + 1;
+    const endPage = Math.min(startPage + pageRange - 1, totalPages);
+    const pageNumbers = Array.from({ length: endPage - startPage + 1 }, (_, index) => startPage + index);
 
 //---------------------------------------------------------
 
@@ -76,22 +80,20 @@ const Cards = () => {
                 <button className={style.btn_move} onClick={() => handlePage(currentPage - 1)} disabled={currentPage === 1}>&#60;</button>
 
                 <div className={style.page_numbers}>
-                {pageNumbers.map((pageNum) => (
-                <button
-                  key={pageNum}
-                  onClick={() => handlePage(pageNum)}
-                  className={pageNum === currentPage ? style.active_page : ''}
-                >
-                {pageNum}
-                </button>
-              ))}
-            </div>
+                    {pageNumbers.map((pageNum) => (
+                        <button
+                            key={pageNum}
+                            onClick={() => handlePage(pageNum)}
+                            className={pageNum === currentPage ? style.active_page : ''}
+                        >
+                            {pageNum}
+                        </button>
+                    ))}
+                </div>
 
                 <button className={style.btn_move} onClick={() => handlePage(currentPage + 1)} disabled={!hasNextPage}>&#62;</button>
             </div>
 
-            
-            
         </div>
     )
 };
