@@ -47,6 +47,7 @@ const SearchBar = () => {
                     image={pokemon[0]?.image}
                     name={pokemon[0]?.name}
                     type={pokemon[0]?.type ? pokemon[0]?.type?.map(type => type.name).join(' ') : pokemon[0]?.types?.map(type => type.type).join(' ')}
+                    attack={pokemon[0]?.attack}
                     />
                     </div>
             )}

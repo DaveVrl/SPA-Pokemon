@@ -35,6 +35,12 @@ const Cards = () => {
     const handlePage = (pag)=>{
         dispatch(setCurrentPage(pag));
     };
+//--------------------------------------------------------- NUMEROS DE PAGINADO
+
+    const totalItems = allPokemons.length;
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+    const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
+
 
 //---------------------------------------------------------
 
@@ -42,14 +48,6 @@ const Cards = () => {
         <div className={style.container}>
             
             <SearchBar/>
-
-            <div className={style.buttons_container}>
-                <button onClick={() => handlePage(currentPage - 1)} disabled={currentPage === 1}>&#60;</button>
-
-                <p>{currentPage}</p>
-
-                <button onClick={() => handlePage(currentPage + 1)} disabled={!hasNextPage}>&#62;</button>
-            </div>
 
             <Filter/>
     
@@ -73,6 +71,27 @@ const Cards = () => {
                     })
                 }
             </div>
+
+            <div className={style.buttons_container}>
+                <button className={style.btn_move} onClick={() => handlePage(currentPage - 1)} disabled={currentPage === 1}>&#60;</button>
+
+                <div className={style.page_numbers}>
+                {pageNumbers.map((pageNum) => (
+                <button
+                  key={pageNum}
+                  onClick={() => handlePage(pageNum)}
+                  className={pageNum === currentPage ? style.active_page : ''}
+                >
+                {pageNum}
+                </button>
+              ))}
+            </div>
+
+                <button className={style.btn_move} onClick={() => handlePage(currentPage + 1)} disabled={!hasNextPage}>&#62;</button>
+            </div>
+
+            
+            
         </div>
     )
 };
