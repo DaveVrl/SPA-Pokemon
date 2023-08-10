@@ -3,10 +3,10 @@ import { GET_POKES, GET_TYPES, GET_POKE_NAME, GET_POKE_ID, FILTER_ORDER, FILTER_
 import axios from "axios";
 
 export const getPokes = () => {
-    const endpoint = "http://localhost:3001/pokemons";
+    // const endpoint = "http://localhost:3001/pokemons";
     return async (dispatch) => {
         try {
-            const { data } = await axios.get(endpoint);
+            const { data } = await axios.get("/pokemons");
             if(!data) throw new Error("No se obtuvo la data-pokemons");
 
             return dispatch({
@@ -20,10 +20,10 @@ export const getPokes = () => {
 };
 
 export const getTypes = () => {
-    const endpoint = "http://localhost:3001/type";
+    // const endpoint = "http://localhost:3001/type";
     return async (dispatch) => {
         try {
-            const { data } = await axios.get(endpoint);
+            const { data } = await axios.get("/type");
             if(!data) throw new Error("No se obtuvo la data-type");
 
             return dispatch({
@@ -38,10 +38,10 @@ export const getTypes = () => {
 };
 
 export const getPokeName = (name) => {
-    const endpoint = `http://localhost:3001/pokemons/name?name=${name}`;
+    // const endpoint = `http://localhost:3001/pokemons/name?name=${name}`;
     return async (dispatch) => {
         try {
-            const { data } = await axios.get(endpoint);
+            const { data } = await axios.get(`/pokemons/name?name=${name}`);
             if(!data) throw new Error("No se obtuvo la data-name");
             
             return dispatch({
@@ -56,10 +56,10 @@ export const getPokeName = (name) => {
 };
 
 export const getPokeId = (id) => {
-    const endpoint = `http://localhost:3001/pokemons/${id}`;
+    // const endpoint = `http://localhost:3001/pokemons/${id}`;
     return async (dispatch) => {
         try {
-            const { data } = await axios.get(endpoint);
+            const { data } = await axios.get(`/pokemons/${id}`);
             if(!data) throw new Error("No se obtuvo la data-ID");
 
             return dispatch({
@@ -103,10 +103,10 @@ export const filterOrigin = (origin) => {
 export const createPoke = (pokeData) => {
     return async (dispatch) => {
         
-        const endpoint = "http://localhost:3001/pokemons";
+        // const endpoint = "http://localhost:3001/pokemons";
         
         try {
-            const { data } = await axios.post(endpoint, pokeData);
+            const { data } = await axios.post("/pokemons", pokeData);
             
             if(!data) throw new Error("No se obtuvo la data");
 
@@ -122,11 +122,11 @@ export const createPoke = (pokeData) => {
 
 export const getDbPokes = () => {
     
-    const endpoint = "http://localhost:3001/db";
+    // const endpoint = "http://localhost:3001/db";
 
     return async (dispatch) => {
         try {
-            const { data } = await axios(endpoint);
+            const { data } = await axios("/db");
 
             return dispatch({
                 type: GET_DB_POKES,
