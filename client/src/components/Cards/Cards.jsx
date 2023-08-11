@@ -5,6 +5,7 @@ import SearchBar from '../SearchBar/SearchBar'
 import Filter from '../Filter/Filter';
 import { getPokes , getDbPokes , setCurrentPage , setLoading } from '../../Redux/actions';
 import style from './Cards.module.css';
+import load from '../assets/loading.gif'
 
 const Cards = () => {
     const dispatch = useDispatch();
@@ -56,7 +57,8 @@ return (
         <Filter />
 
         {loading ? (
-            <div className={style.loading}>Cargando...</div>
+            <div className={style.loading}>
+                <img className={style.loadgif} src={load} alt="loading..." /></div>
         ) : (
             <div className={style.cards_container}>
                 {groupSlice.map(pokemon => (
