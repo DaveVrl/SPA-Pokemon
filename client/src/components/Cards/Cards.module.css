@@ -82,3 +82,12 @@
     background-color: #333;
     color: #fff;
 }
+
+.loading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    height: 50vh;
+}

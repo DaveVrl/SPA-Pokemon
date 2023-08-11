@@ -12,3 +12,4 @@ export const CLEAR_POKEMON = 'CLEAR_POKEMON';
 export const CLEAR_DETAIL = 'CLEAR_DETAIL';
 export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 export const SET_SHOW_CARD = 'SET_SHOW_CARD';
+export const LOADING = 'LOADING';

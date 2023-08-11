@@ -1,6 +1,13 @@
-import { GET_POKES, GET_TYPES, GET_POKE_NAME, GET_POKE_ID, FILTER_ORDER, FILTER_TYPE, ORDER_BY_ATTACK, FILTER_ORIGIN, CREATE_POKE, GET_DB_POKES, CLEAR_POKEMON, CLEAR_DETAIL, SET_CURRENT_PAGE, SET_SHOW_CARD } from "./action-types";
+import { GET_POKES, GET_TYPES, GET_POKE_NAME, GET_POKE_ID, FILTER_ORDER, FILTER_TYPE, ORDER_BY_ATTACK, FILTER_ORIGIN, CREATE_POKE, GET_DB_POKES, CLEAR_POKEMON, CLEAR_DETAIL, SET_CURRENT_PAGE, SET_SHOW_CARD, LOADING } from "./action-types";
 
 import axios from "axios";
+
+export const setLoading = (value)=> {
+    return {
+        type: LOADING,
+        payload : value
+    }
+};
 
 export const getPokes = () => {
     // const endpoint = "http://localhost:3001/pokemons";

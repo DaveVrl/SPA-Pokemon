@@ -3,18 +3,20 @@ import { useEffect } from 'react';
 import Card from '../Card/Card';
 import SearchBar from '../SearchBar/SearchBar'
 import Filter from '../Filter/Filter';
-import { getPokes , getDbPokes , setCurrentPage } from '../../Redux/actions';
+import { getPokes , getDbPokes , setCurrentPage , setLoading } from '../../Redux/actions';
 import style from './Cards.module.css';
 
 const Cards = () => {
     const dispatch = useDispatch();
 
     const allPokemons = useSelector(state => state.pokemons);
+    const loading = useSelector(state => state.loading);
 
     useEffect(() => {
         if (allPokemons.length === 0) {
-        dispatch(getPokes());
-        dispatch(getDbPokes());
+            dispatch(setLoading(true)); // Comienza la carga si no hay pokemons
+            Promise.all([dispatch(getPokes()), dispatch(getDbPokes())])
+                .then(() => dispatch(setLoading(false))); // Finaliza la carga después de obtener los pokemons y pokemons de la base de datos
         }
     }, [dispatch, allPokemons]);
 
@@ -48,54 +50,55 @@ const Cards = () => {
 
 //---------------------------------------------------------
 
-    return (
-        <div className={style.container}>
-            
-            <SearchBar/>
+return (
+    <div className={style.container}>
+        <SearchBar />
+        <Filter />
 
-            <Filter/>
-    
+        {loading ? (
+            <div className={style.loading}>Cargando...</div>
+        ) : (
             <div className={style.cards_container}>
-                {
-                    groupSlice.map( pokemon => {
-                        return (
-                            <Card
-                            key={pokemon?.id}
-                            id={pokemon?.id}
-                            image={pokemon?.image}
-                            name={pokemon?.name}
-                            type={
-                                pokemon?.type 
-                                ? pokemon?.type?.map(type => type.name.charAt(0).toUpperCase() + type.name.substring(1)).join(' - ') 
+                {groupSlice.map(pokemon => (
+                    <Card
+                        key={pokemon?.id}
+                        id={pokemon?.id}
+                        image={pokemon?.image}
+                        name={pokemon?.name}
+                        type={
+                            pokemon?.type
+                                ? pokemon?.type?.map(type => type.name.charAt(0).toUpperCase() + type.name.substring(1)).join(' - ')
                                 : pokemon?.types?.map(type => type.type.charAt(0).toUpperCase() + type.type.substring(1)).join(' - ')
-                            }
-                            attack={pokemon?.attack}
-                            />
-                        );
-                    })
-                }
+                        }
+                        attack={pokemon?.attack}
+                    />
+                ))}
             </div>
+        )}
 
-            <div className={style.buttons_container}>
-                <button className={style.btn_move} onClick={() => handlePage(currentPage - 1)} disabled={currentPage === 1}>&#60;</button>
+        <div className={style.buttons_container}>
+            {!loading && (
+                <>
+                    <button className={style.btn_move} onClick={() => handlePage(currentPage - 1)} disabled={currentPage === 1}>&#60;</button>
 
-                <div className={style.page_numbers}>
-                    {pageNumbers.map((pageNum) => (
-                        <button
-                            key={pageNum}
-                            onClick={() => handlePage(pageNum)}
-                            className={pageNum === currentPage ? style.active_page : ''}
-                        >
-                            {pageNum}
-                        </button>
-                    ))}
-                </div>
+                    <div className={style.page_numbers}>
+                        {pageNumbers.map((pageNum) => (
+                            <button
+                                key={pageNum}
+                                onClick={() => handlePage(pageNum)}
+                                className={pageNum === currentPage ? style.active_page : ''}
+                            >
+                                {pageNum}
+                            </button>
+                        ))}
+                    </div>
 
-                <button className={style.btn_move} onClick={() => handlePage(currentPage + 1)} disabled={!hasNextPage}>&#62;</button>
-            </div>
-
+                    <button className={style.btn_move} onClick={() => handlePage(currentPage + 1)} disabled={!hasNextPage}>&#62;</button>
+                </>
+            )}
         </div>
-    )
-};
+    </div>
+)};
+
 
 export default Cards;
