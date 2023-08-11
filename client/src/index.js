@@ -7,8 +7,8 @@ import store from './Redux/store';
 import { Provider } from 'react-redux';
 import axios from 'axios';
 
-axios.defaults.baseURL = `http://localhost:3001`
-//axios.defaults.baseURL = `https://poke-server-67q9.onrender.com`
+// axios.defaults.baseURL = `http://localhost:3001`
+axios.defaults.baseURL = `https://poke-server-67q9.onrender.com`
 
 ReactDOM.render(
   <Provider store={store}>
