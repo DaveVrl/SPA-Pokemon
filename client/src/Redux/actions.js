@@ -11,20 +11,31 @@ export const setLoading = (value)=> {
 
 export const getPokes = () => {
     // const endpoint = "http://localhost:3001/pokemons";
-    return async (dispatch) => {
-        try {
-            const { data } = await axios.get("/pokemons");
-            if(!data) throw new Error("No se obtuvo la data-pokemons");
+    const MAX_RETRIES = 6; // Número máximo de reintentos
 
-            return dispatch({
-                type:GET_POKES,
-                payload: data
-            })
-        } catch (error) {
-            console.error(error.message);
+    return async (dispatch) => {
+        let retries = 0;
+
+        while (retries < MAX_RETRIES) {
+            try {
+                const { data } = await axios.get("/pokemons");
+                if (!data) throw new Error("No se obtuvo la data-pokemons");
+
+                return dispatch({
+                    type: GET_POKES,
+                    payload: data
+                });
+            } catch (error) {
+                console.error(`Error on attempt ${retries + 1}:`, error.message);
+                retries++;
+            }
         }
-    }
+
+        // Si se superan los reintentos, manejar el error
+        console.error('Max retries exceeded');
+    };
 };
+
 
 export const getTypes = () => {
     // const endpoint = "http://localhost:3001/type";
