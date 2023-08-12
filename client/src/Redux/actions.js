@@ -11,7 +11,7 @@ export const setLoading = (value)=> {
 
 export const getPokes = () => {
     // const endpoint = "http://localhost:3001/pokemons";
-    const MAX_RETRIES = 6; // Número máximo de reintentos
+    const MAX_RETRIES = 10; // Número máximo de reintentos
 
     return async (dispatch) => {
         let retries = 0;
