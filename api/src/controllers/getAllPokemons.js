@@ -1,27 +1,10 @@
 const URL = "https://pokeapi.co/api/v2/pokemon?limit=60&offset=0";
 const axios = require("axios");
 
-const MAX_RETRIES = 3; // Número máximo de reintentos
-
 const getAllPokemons = async (req, res) => {
     try {
-        let retries = 0;
-        let data = null;
 
-        while (retries < MAX_RETRIES) {
-            try {
-                const response = await axios(URL);
-                data = response.data;
-                break; // Romper el ciclo si la solicitud es exitosa
-            } catch (error) {
-                console.error(`Error on attempt ${retries + 1}:`, error.message);
-                retries++;
-            }
-        }
-
-        if (!data) {
-            return res.status(500).json({ error: 'Max retries exceeded' });
-        }
+        const { data } = await axios(URL);
 
         const { results } = data;
 
@@ -44,6 +27,8 @@ const getAllPokemons = async (req, res) => {
             });
             return {id, name, image, hp, attack, defense, speed, height, weight, type};
         }));
+
+        //console.log(mapResults)
 
         return res.status(200).json(mapResults);
 
