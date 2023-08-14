@@ -53,13 +53,14 @@ const Cards = () => {
 
 return (
     <div className={style.container}>
-        <SearchBar />
-        <Filter />
 
         {loading ? (
             <div className={style.loading}>
                 <img className={style.loadgif} src={load} alt="loading..." /></div>
         ) : (
+            <>
+            <SearchBar />
+            <Filter />
             <div className={style.cards_container}>
                 {groupSlice.map(pokemon => (
                     <Card
@@ -76,6 +77,7 @@ return (
                     />
                 ))}
             </div>
+            </>
         )}
 
         <div className={style.buttons_container}>
