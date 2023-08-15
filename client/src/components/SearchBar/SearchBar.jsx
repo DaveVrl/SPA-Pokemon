@@ -35,12 +35,10 @@ const SearchBar = () => {
         <div className={style.container}>
             <p className={style.pSearch}>Search your favorite Pokémon!</p>
             <div className={style.barBtn}>
-                
+
             <input value={name} className={style.searchInput} type="search" onChange={(event) => handleChange(event)} onKeyDown={(event) => {
             if (event.key === 'Enter') {
-            submitHandler(name);
-            }
-            }} placeholder="Search By Name..."/>
+            submitHandler(name) }}} placeholder="Search By Name..."/>
 
             <button className={style.searchBtn} type="submit" onClick={() => submitHandler(name) }>&#128269;</button>
             </div>
