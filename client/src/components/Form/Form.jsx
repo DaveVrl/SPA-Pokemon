@@ -107,46 +107,46 @@ console.log(pokeData)
 
 
     return (
-        <div className={style.containerGeneral}>
+        <div className={style.containerGeneral}  style={{ cursor: isLoading ? "wait" : "default" }}>
             <form onSubmit={handleSubmit}>
                 <div className={style.container_n}>
                     <div className={style.container_n_individual}>
                     <label htmlFor="name">Name:</label>
-                    <input name="name" type="text" placeholder="Pokemon Name" onChange={handleInputChange}/>
+                    <input name="name" type="text" placeholder="Pokemon Name" onChange={handleInputChange} style={{ cursor: isLoading ? "wait" : "text" }}/>
                     {errors.name && <p>{errors.name}</p>}
                     </div>
                 </div>
                 <div className={style.container_3}>
                     <div className={style.container_3_individual}>
                         <label htmlFor="hp">HP:</label>
-                        <input name="hp" type="number" placeholder="Hit Points" onChange={handleInputChange}/>
+                        <input name="hp" type="number" placeholder="Hit Points" onChange={handleInputChange} style={{ cursor: isLoading ? "wait" : "text" }}/>
                         {errors.hp && <p>{errors.hp}</p>}
                     </div>
                     <div className={style.container_3_individual}>
                         <label htmlFor="attack">Attack:</label>
-                        <input name="attack" type="number" placeholder="Attack Points" onChange={handleInputChange}/>
+                        <input name="attack" type="number" placeholder="Attack Points" onChange={handleInputChange} style={{ cursor: isLoading ? "wait" : "text" }}/>
                         {errors.attack && <p>{errors.attack}</p>}
                     </div>
                     <div className={style.container_3_individual}>
                         <label htmlFor="defense">Defense:</label>
-                        <input name="defense" type="number" placeholder="Defense Points" onChange={handleInputChange}/>
+                        <input name="defense" type="number" placeholder="Defense Points" onChange={handleInputChange} style={{ cursor: isLoading ? "wait" : "text" }}/>
                         {errors.defense && <p>{errors.defense}</p>}
                     </div>
                 </div>
                 <div className={style.container_3}>
                     <div className={style.container_3_individual}>
                         <label htmlFor="speed">Speed:</label>
-                        <input name="speed" type="number" placeholder="Speed Points" onChange={handleInputChange}/>
+                        <input name="speed" type="number" placeholder="Speed Points" onChange={handleInputChange} style={{ cursor: isLoading ? "wait" : "text" }}/>
                         {errors.speed && <p>{errors.speed}</p>}
                     </div>
                     <div className={style.container_3_individual}>
                         <label htmlFor="height">Height:</label>
-                        <input name="height" type="number" placeholder="Height Points" onChange={handleInputChange}/>
+                        <input name="height" type="number" placeholder="Height Points" onChange={handleInputChange} style={{ cursor: isLoading ? "wait" : "text" }}/>
                         {errors.height && <p>{errors.height}</p>}
                     </div>
                     <div className={style.container_3_individual}>
                         <label htmlFor="weight">Weight:</label>
-                        <input name="weight" type="number" placeholder="Weight Points" onChange={handleInputChange}/>
+                        <input name="weight" type="number" placeholder="Weight Points" onChange={handleInputChange} style={{ cursor: isLoading ? "wait" : "text" }}/>
                         {errors.weight && <p>{errors.weight}</p>}
                     </div>
                 </div>
@@ -157,74 +157,74 @@ console.log(pokeData)
                     <div className={style.types}>
                         <div className={style.types_5}>
                         <label>Normal</label>
-                            <input type="checkbox" value="normal" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("normal")}/>
+                            <input type="checkbox" value="normal" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("normal")} style={{ cursor: isLoading ? "wait" : "pointer" }}/>
 
                         <label>Fighting</label>
-                            <input type="checkbox" value="fighting" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("fighting")}/>
+                            <input type="checkbox" value="fighting" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("fighting")} style={{ cursor: isLoading ? "wait" : "pointer" }}/>
                         
                         <label>Flying</label>
-                            <input type="checkbox" value="flying" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("flying")}/>
+                            <input type="checkbox" value="flying" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("flying")} style={{ cursor: isLoading ? "wait" : "pointer" }}/>
                         
                         <label>Poison</label>
-                            <input type="checkbox" value="poison" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("poison")}/>
+                            <input type="checkbox" value="poison" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("poison")} style={{ cursor: isLoading ? "wait" : "pointer" }}/>
                         
                         <label>Ground</label>
-                            <input type="checkbox" value="ground" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("ground")}/>
+                            <input type="checkbox" value="ground" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("ground")} style={{ cursor: isLoading ? "wait" : "pointer" }}/>
                         </div>
                         <div className={style.types_5}>
                         <label>Rock</label>
-                            <input type="checkbox" value="rock" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("rock")}/>
+                            <input type="checkbox" value="rock" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("rock")} style={{ cursor: isLoading ? "wait" : "pointer" }}/>
                         
                         <label>Bug</label>
-                            <input type="checkbox" value="bug" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("bug")}/>
+                            <input type="checkbox" value="bug" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("bug")} style={{ cursor: isLoading ? "wait" : "pointer" }}/>
                         
                         <label>Ghost</label>
-                            <input type="checkbox" value="ghost" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("ghost")}/>
+                            <input type="checkbox" value="ghost" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("ghost")} style={{ cursor: isLoading ? "wait" : "pointer" }}/>
                         
                         <label>Steel</label>
-                            <input type="checkbox" value="steel" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("steel")}/>
+                            <input type="checkbox" value="steel" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("steel")} style={{ cursor: isLoading ? "wait" : "pointer" }}/>
                         
                         <label>Fire</label>
-                            <input type="checkbox" value="fire" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("fire")}/>
+                            <input type="checkbox" value="fire" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("fire")} style={{ cursor: isLoading ? "wait" : "pointer" }}/>
                         </div>
                         <div className={style.types_5}>
                         <label>Water</label>
-                            <input type="checkbox" value="water" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("water")}/>
+                            <input type="checkbox" value="water" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("water")} style={{ cursor: isLoading ? "wait" : "pointer" }}/>
                         
                         <label>Grass</label>
-                            <input type="checkbox" value="grass" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("grass")}/>
+                            <input type="checkbox" value="grass" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("grass")} style={{ cursor: isLoading ? "wait" : "pointer" }}/>
                         
                         <label>Electric</label>
-                            <input type="checkbox" value="electric" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("electric")}/>
+                            <input type="checkbox" value="electric" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("electric")} style={{ cursor: isLoading ? "wait" : "pointer" }}/>
                         
                         <label>Psychic</label>
-                            <input type="checkbox" value="psychic" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("psychic")}/>
+                            <input type="checkbox" value="psychic" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("psychic")} style={{ cursor: isLoading ? "wait" : "pointer" }}/>
                         
                         <label>Ice</label>
-                            <input type="checkbox" value="ice" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("ice")}/>
+                            <input type="checkbox" value="ice" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("ice")} style={{ cursor: isLoading ? "wait" : "pointer" }}/>
                         </div>
                         <div className={style.types_5}>
                         <label>Dragon</label>
-                            <input type="checkbox" value="dragon" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("dragon")}/>
+                            <input type="checkbox" value="dragon" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("dragon")} style={{ cursor: isLoading ? "wait" : "pointer" }}/>
                         
                         <label>Dark</label>
-                            <input type="checkbox" value="dark" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("dark")}/>
+                            <input type="checkbox" value="dark" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("dark")} style={{ cursor: isLoading ? "wait" : "pointer" }}/>
                         
                         <label>Fairy</label>
-                            <input type="checkbox" value="fairy" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("fairy")}/>
+                            <input type="checkbox" value="fairy" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("fairy")} style={{ cursor: isLoading ? "wait" : "pointer" }}/>
                         
                         <label>Unknown</label>
-                            <input type="checkbox" value="unknown" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("unknown")}/>
+                            <input type="checkbox" value="unknown" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("unknown")} style={{ cursor: isLoading ? "wait" : "pointer" }}/>
                         
                         <label>Shadow</label>
-                            <input type="checkbox" value="shadow" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("shadow")}/>
+                            <input type="checkbox" value="shadow" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("shadow")} style={{ cursor: isLoading ? "wait" : "pointer" }}/>
                         </div>
                     </div>
                     {errors.type && <p className={style.errTyp}>{errors.type}</p>}
                 </div>
                 <div className={style.container_imgLoad}>
                     <label htmlFor="">Put your Pokemon's URL image:</label>
-                    <input name="image" type="url" onChange={handleInputChange} placeholder="Your image link here..." />
+                    <input name="image" type="url" onChange={handleInputChange} placeholder="Your image link here..." style={{ cursor: isLoading ? "wait" : "text" }}/>
                     {errors.image && <p>{errors.image}</p>}
                 </div>
                 <button className={style.create} type="submit" 
