@@ -5,6 +5,7 @@ import Detail from './components/Detail/Detail';
 import Nav from './components/Nav/Nav';
 import Form from './components/Form/Form';
 import LandingPage from './components/LandingPage/LandingPage';
+import Footer from './components/Footer/Footer';
 import { Routes , Route } from 'react-router-dom';
 
 
@@ -20,6 +21,7 @@ function App() {
       <Route path="/detail/:id" element={<Detail/>}/>
       <Route path="/form" element={<Form/>}/>
       </Routes>
+      <Footer/>
     </div>
   );
 }
