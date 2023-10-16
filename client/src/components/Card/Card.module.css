@@ -1,6 +1,6 @@
 .card {
-    width: 280px;
-    height: 360px;
+    width: 250px;
+    height: 310px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -31,9 +31,13 @@
 
 .img {
     margin: 0 auto;
-    width: 220px;
-    height: 220px;
+    width: 180px;
+    height: 180px;
     object-fit: contain;
     user-select: none;
     -webkit-user-drag: none;   
+}
+
+.card h2 {
+    font-size: 20px;
 }

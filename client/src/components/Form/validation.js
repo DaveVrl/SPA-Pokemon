@@ -60,10 +60,10 @@ const validation = (pokeData, db, api) => {
     errors.weight = "Allowed range is from 0.1 to 999.9 pounds.";
   }
 
-  // IMAGE
-  if (!/^https?:\/\/.*\.(png|jpg|jpeg|svg)$/.test(pokeData.image)) {
-    errors.image = "You must enter a valid URL in PNG, JPG, JPEG, or SVG format.";
-  }
+  // // IMAGE
+  // if (!/^https?:\/\/.*\.(png|jpg|jpeg|svg)$/.test(pokeData.image)) {
+  //   errors.image = "You must enter a valid URL in PNG, JPG, JPEG, or SVG format.";
+  // }
 
   // TYPE
   if (pokeData.type.length < 1 || pokeData.type.length > 2) {

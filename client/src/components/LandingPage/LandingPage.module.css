@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 10vh auto;
+    margin: auto;
 }
 
 .container_button {
@@ -19,7 +19,6 @@
 
 .imgL {
     width: 420px;
-    margin-bottom: 36px;
     user-select: none;
     -webkit-user-drag: none;
 }

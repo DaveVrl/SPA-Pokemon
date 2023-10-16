@@ -9,10 +9,12 @@ import Footer from './components/Footer/Footer';
 import { Routes , Route } from 'react-router-dom';
 
 
+
 function App() {
   
 
   return (
+    <div>
     <div className="App">
       <Nav/>
       <Routes>
@@ -21,7 +23,8 @@ function App() {
       <Route path="/detail/:id" element={<Detail/>}/>
       <Route path="/form" element={<Form/>}/>
       </Routes>
-      <Footer/>
+    </div>
+    <Footer/>
     </div>
   );
 }

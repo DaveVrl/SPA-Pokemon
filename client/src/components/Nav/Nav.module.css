@@ -23,7 +23,7 @@
     background-color: white;
     border: none;
     transform: scale(1.03);
-    box-shadow: 2px 6px 40px #ffffffe0;
+    /* box-shadow: 2px 6px 40px #ffffffe0; */
 }
 
 .btn:active , .btn2:active {
