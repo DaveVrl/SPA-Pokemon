@@ -11,7 +11,7 @@
   background-repeat: no-repeat;
   background-position: fixed;
   background-attachment: fixed;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 
