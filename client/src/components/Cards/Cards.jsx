@@ -5,7 +5,8 @@ import SearchBar from '../SearchBar/SearchBar'
 import Filter from '../Filter/Filter';
 import { getPokes , getDbPokes , setCurrentPage , setLoading } from '../../Redux/actions';
 import style from './Cards.module.css';
-import load from '../assets/loading.gif'
+import load from '../assets/loading.gif';
+import imgTypesArray from './imgTypesArray';
 
 const Cards = () => {
     const dispatch = useDispatch();

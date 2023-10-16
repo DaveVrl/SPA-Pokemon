@@ -68,7 +68,6 @@ const Filter = () => {
                     <option value="dark">Dark</option>
                     <option value="fairy">Fairy</option>
                     <option value="unknown">Unknown</option>
-                    <option value="shadow">Shadow</option>
                 </select>
             </div>
             </div>
