@@ -6,7 +6,7 @@ import Filter from '../Filter/Filter';
 import { getPokes , getDbPokes , setCurrentPage , setLoading } from '../../Redux/actions';
 import style from './Cards.module.css';
 import load from '../assets/loading.gif';
-import imgTypesArray from './imgTypesArray';
+import imgTypesObj from '../imgTypesObj';
 
 const Cards = () => {
     const dispatch = useDispatch();
@@ -69,11 +69,45 @@ return (
                         id={pokemon?.id}
                         image={pokemon?.image}
                         name={pokemon?.name}
+                          ////////////////////////////////////
                         type={
                             pokemon?.type
-                                ? pokemon?.type?.map(type => type.name.charAt(0).toUpperCase() + type.name.substring(1)).join(' - ')
-                                : pokemon?.types?.map(type => type.type.charAt(0).toUpperCase() + type.type.substring(1)).join(' - ')
-                        }
+                              ? (
+                                <div>
+                                  {pokemon?.type?.map(type => {
+                                    const typeName = type.name;
+                                    if (imgTypesObj[typeName]) {
+                                      return (
+                                        <img
+                                          key={typeName}
+                                          src={imgTypesObj[typeName]}
+                                          alt={typeName}
+                                        />
+                                      );
+                                    }
+                                    return typeName;
+                                  })}
+                                </div>
+                              )
+                              : (
+                                <div>
+                                  {pokemon?.types?.map(type => {
+                                    const typeName = type.type;
+                                    if (imgTypesObj[typeName]) {
+                                      return (
+                                        <img
+                                          key={typeName}
+                                          src={imgTypesObj[typeName]}
+                                          alt={typeName}
+                                        />
+                                      );
+                                    }
+                                    return typeName;
+                                  })}
+                                </div>
+                              )
+                          }
+                          ////////////////////////////////////
                         attack={pokemon?.attack}
                     />
                 ))}
