@@ -109,6 +109,7 @@ return (
                           }
                           ////////////////////////////////////
                         attack={pokemon?.attack}
+                        hp={pokemon?.hp}
                     />
                 ))}
             </div>
