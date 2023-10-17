@@ -8,8 +8,8 @@ const Card = ({id, name , image, type, attack }) => {
         <div className={style.card}>
             <h1>{name.charAt(0).toUpperCase() + name.substring(1)}</h1>
             <img className={style.img} src={image} alt="#" />
-            <h2>Type: {type}</h2>
             <h3>Attack: {attack}</h3>
+            <h2>{type}</h2>
         </div>
         </NavLink>
     )

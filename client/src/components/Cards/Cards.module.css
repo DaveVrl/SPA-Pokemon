@@ -99,3 +99,13 @@
     user-select: none;
     -webkit-user-drag: none; 
 }
+
+.types {
+    display: flex;
+    justify-content: center;
+    gap: 0.4rem;
+}
+
+.types img {
+    max-width: 110px;
+}

@@ -73,7 +73,7 @@ return (
                         type={
                             pokemon?.type
                               ? (
-                                <div>
+                                <div className={style.types}>
                                   {pokemon?.type?.map(type => {
                                     const typeName = type.name;
                                     if (imgTypesObj[typeName]) {
@@ -90,7 +90,7 @@ return (
                                 </div>
                               )
                               : (
-                                <div>
+                                <div className={style.types}>
                                   {pokemon?.types?.map(type => {
                                     const typeName = type.type;
                                     if (imgTypesObj[typeName]) {
