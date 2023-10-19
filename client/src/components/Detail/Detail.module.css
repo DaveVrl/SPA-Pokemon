@@ -11,7 +11,13 @@
     border-radius:40px 5px 10px 10px;
     align-items: center;
     width: 580px;
+    height: 540px;
     border: outset 4px whitesmoke;
+}
+
+.containerGen h2 , .containerGen h1 , .h1Name {
+    color: whitesmoke;
+    text-shadow: 1px 1px 2px black;
 }
 
 .containerPj {
@@ -19,25 +25,63 @@
     flex-direction: column;
     justify-content: center;
     text-align: justify;
-    color: whitesmoke;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    padding: 30px;
-    text-shadow: 1px 1px 2px black;
     user-select: none;
+    padding: 0 20px;
+    background-color: #00000078;
+    height: 100%;
+    width: 100%;
+    border-bottom-right-radius: 6px;
 }
 
 .containerImg {
-    padding: 20px;
+    user-select: none;
+    -webkit-user-drag: none;
+    padding: 0 20px;
+}
+
+.pokeImg { 
+    -webkit-user-drag: none;
+    height: 320px;
+    width: 320px;
+    margin: 20px 0 10px;
+}
+
+.divType {
+    display: flex;
+    flex-direction: column;
+}
+
+.divType img {
+    width: 140px;
     user-select: none;
     -webkit-user-drag: none;
 }
 
-.containerImg img { 
-    -webkit-user-drag: none;
-    width: 260px;
+.types {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
 }
 
-.h3Type {
-    margin-top: 12px;
+.h1Name {
+    background-color: #00000060;
+    border-radius: 10px;
+}
+
+.h1Stats {
+    text-align: center;
+}
+
+.containerPj img {
+    width: 30px;
+}
+
+.invertImg {
+    filter: invert(100%);
+}
+
+.containerPj h2 {
+    display: flex;
+    align-items: center;
 }
