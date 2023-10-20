@@ -30,7 +30,7 @@ const Detail = () => {
       {
         <div className={style.containerGen}>
           <div className={style.containerPj}>
-            <h1 className={style.h1Stats}>Stats:</h1>
+            <h2 className={style.h1Stats}>Stats:</h2>
             <div className={style.stat_and_imgContainer}>
               <h2>Attack: {pokemon?.attack}</h2>
               <img src={attack} alt="" />
