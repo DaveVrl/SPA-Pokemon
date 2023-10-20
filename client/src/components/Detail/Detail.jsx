@@ -3,8 +3,8 @@ import { useEffect } from "react";
 import { getPokeId, clearDetail } from "../../Redux/actions";
 import { useParams } from "react-router-dom";
 import style from "./Detail.module.css";
-import sword from "../assets/sword.png";
-import heart from "../assets/heart.png";
+import attack from "../assets/attack.png";
+import heart from "../assets/heart-detail.png";
 import defense from "../assets/defense.png";
 import speed from "../assets/speed.png";
 import height from "../assets/height.png";
@@ -31,29 +31,29 @@ const Detail = () => {
         <div className={style.containerGen}>
           <div className={style.containerPj}>
             <h1 className={style.h1Stats}>Stats:</h1>
-            <div>
-              <h2>HP: {pokemon?.hp}</h2>     
-              <img src={heart} alt="" />
-            </div>
-            <div>
+            <div className={style.stat_and_imgContainer}>
               <h2>Attack: {pokemon?.attack}</h2>
-              <img src={sword} alt="" />
+              <img src={attack} alt="" />
             </div>
-            <div>
+            <div className={style.stat_and_imgContainer}>
+              <h2>HP: {pokemon?.hp}</h2>     
+              <img src={heart} alt="hp" />
+            </div>
+            <div className={style.stat_and_imgContainer}>
               <h2>Defense: {pokemon?.defense}</h2>
-              <img src={defense} alt="" />
+              <img src={defense} alt="defense" />
             </div>
-            <div>
+            <div className={style.stat_and_imgContainer}>
               <h2>Speed: {pokemon?.speed}</h2>
-            <img src={speed} alt="" />
+            <img src={speed} alt="speed" />
             </div>
-            <div>
+            <div className={style.stat_and_imgContainer}>
               <h2>Height: {pokemon?.height}</h2>
-            <img className={style.invertImg} src={height} alt="" />
+            <img src={height} alt="height" />
             </div>
-            <div>
-              <h2>Weight: {pokemon?.weight}</h2>
-            <img className={style.invertImg} src={weight} alt="" />
+            <div className={style.stat_and_imgContainer}>
+              <h2>Weight: {pokemon?.weight}lb</h2>
+            <img src={weight} alt="weight" />
             </div>
           </div>
 

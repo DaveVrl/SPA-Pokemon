@@ -10,8 +10,8 @@
     justify-content: center;
     border-radius:40px 5px 10px 10px;
     align-items: center;
-    width: 580px;
-    height: 540px;
+    width: 610px;
+    height: 520px;
     border: outset 4px whitesmoke;
 }
 
@@ -26,7 +26,7 @@
     justify-content: center;
     text-align: justify;
     user-select: none;
-    padding: 0 20px;
+    padding: 0 16px;
     background-color: #00000078;
     height: 100%;
     width: 100%;
@@ -36,7 +36,7 @@
 .containerImg {
     user-select: none;
     -webkit-user-drag: none;
-    padding: 0 20px;
+    padding: 0 16px;
 }
 
 .pokeImg { 
@@ -77,11 +77,8 @@
     width: 30px;
 }
 
-.invertImg {
-    filter: invert(100%);
-}
-
-.containerPj h2 {
+.stat_and_imgContainer{
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
