@@ -36,7 +36,7 @@ const Detail = () => {
               <img src={attack} alt="" />
             </div>
             <div className={style.stat_and_imgContainer}>
-              <h2>HP: {pokemon?.hp}</h2>     
+              <h2>HP: {pokemon?.hp}</h2>
               <img src={heart} alt="hp" />
             </div>
             <div className={style.stat_and_imgContainer}>
@@ -45,15 +45,15 @@ const Detail = () => {
             </div>
             <div className={style.stat_and_imgContainer}>
               <h2>Speed: {pokemon?.speed}</h2>
-            <img src={speed} alt="speed" />
+              <img src={speed} alt="speed" />
             </div>
             <div className={style.stat_and_imgContainer}>
               <h2>Height: {pokemon?.height}</h2>
-            <img src={height} alt="height" />
+              <img src={height} alt="height" />
             </div>
             <div className={style.stat_and_imgContainer}>
-              <h2>Weight: {pokemon?.weight}lb</h2>
-            <img src={weight} alt="weight" />
+              <h2>Weight: {pokemon?.weight}</h2>
+              <img src={weight} alt="weight" />
             </div>
           </div>
 
@@ -63,45 +63,46 @@ const Detail = () => {
                 pokemon.name.charAt(0).toUpperCase() +
                   pokemon.name.substring(1)}
             </h1>
-            <img className={style.pokeImg} src={pokemon?.image} alt={pokemon?.name} />
+            <img
+              className={style.pokeImg}
+              src={pokemon?.image}
+              alt={pokemon?.name}
+            />
             <div className={style.divType}>
               <h2>Types: </h2>
-              {pokemon?.type
-                              ? (
-                                <div className={style.types}>
-                                  {pokemon?.type?.map(type => {
-                                    const typeName = type.name;
-                                    if (imgTypesObj[typeName]) {
-                                      return (
-                                        <img
-                                          key={typeName}
-                                          src={imgTypesObj[typeName]}
-                                          alt={typeName}
-                                        />
-                                      );
-                                    }
-                                    return typeName;
-                                  })}
-                                </div>
-                              )
-                              : (
-                                <div className={style.types}>
-                                  {pokemon?.types?.map(type => {
-                                    const typeName = type.type;
-                                    if (imgTypesObj[typeName]) {
-                                      return (
-                                        <img
-                                          key={typeName}
-                                          src={imgTypesObj[typeName]}
-                                          alt={typeName}
-                                        />
-                                      );
-                                    }
-                                    return typeName;
-                                  })}
-                                </div>
-                              )
-                          }
+              {pokemon?.type ? (
+                <div className={style.types}>
+                  {pokemon?.type?.map((type) => {
+                    const typeName = type.name;
+                    if (imgTypesObj[typeName]) {
+                      return (
+                        <img
+                          key={typeName}
+                          src={imgTypesObj[typeName]}
+                          alt={typeName}
+                        />
+                      );
+                    }
+                    return typeName;
+                  })}
+                </div>
+              ) : (
+                <div className={style.types}>
+                  {pokemon?.types?.map((type) => {
+                    const typeName = type.type;
+                    if (imgTypesObj[typeName]) {
+                      return (
+                        <img
+                          key={typeName}
+                          src={imgTypesObj[typeName]}
+                          alt={typeName}
+                        />
+                      );
+                    }
+                    return typeName;
+                  })}
+                </div>
+              )}
             </div>
           </div>
         </div>

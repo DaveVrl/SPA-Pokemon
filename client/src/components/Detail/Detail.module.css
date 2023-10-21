@@ -66,9 +66,14 @@
 }
 
 .h1Name {
+    display: flex;
+    justify-content: center;
     background-color: #00000078;
     border-radius: 10px;
-    padding: 2px;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 2px 20px;
+    font-size: 30px;
 }
 
 .h1Stats {
@@ -87,7 +92,6 @@
     justify-content: space-between;
     background-color: #00000078;
     margin: 8px 0;
-    padding: 4px;
+    padding: 4px 6px;
     border-radius: 10px;
-    
 }
