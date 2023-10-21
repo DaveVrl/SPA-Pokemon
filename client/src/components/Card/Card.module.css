@@ -13,7 +13,19 @@
     border: outset 4px whitesmoke;
     transition: 0.2s;
     user-select: none;
+    opacity: 0; /* Comienza con opacidad 0 */
+    animation: fadeIn 0.4s ease-in-out forwards;
 }
+
+ @keyframes fadeIn {
+    0% {
+        opacity: 0; /* Opacidad inicial al 0% */
+    }
+    100% {
+        opacity: 1; /* Opacidad final al 100% */
+    }
+}
+
 
 .card:hover {
     transform: scale(1.05);
