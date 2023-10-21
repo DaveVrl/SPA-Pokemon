@@ -14,7 +14,7 @@
     height: 520px;
     border: outset 4px whitesmoke;
     opacity: 0; /* Comienza con opacidad 0 */
-    animation: fadeIn 5s ease-in-out forwards;
+    animation: fadeIn 0.5s ease-in-out forwards;
 }
 
  @keyframes fadeIn {
