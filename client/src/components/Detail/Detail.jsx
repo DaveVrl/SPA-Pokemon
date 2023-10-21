@@ -25,10 +25,6 @@ const Detail = () => {
     };
   }, [dispatch, id]);
 
-  if (!pokemon) {
-    return <div>Cargando...</div>;
-  }
-
   return (
     <div className={style.general}>
       {
