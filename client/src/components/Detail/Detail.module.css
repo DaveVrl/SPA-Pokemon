@@ -95,3 +95,20 @@
     padding: 4px 6px;
     border-radius: 10px;
 }
+
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 85vh;
+}
+
+.loadgif {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    width: 100px;
+    user-select: none;
+    -webkit-user-drag: none; 
+}

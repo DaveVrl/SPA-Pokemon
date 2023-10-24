@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getPokeId, clearDetail } from "../../Redux/actions";
+import { getPokeId, clearDetail , setLoadingId } from "../../Redux/actions";
 import { useParams } from "react-router-dom";
 import style from "./Detail.module.css";
 import attack from "../assets/attack.png";
@@ -10,24 +10,41 @@ import speed from "../assets/speed.png";
 import height from "../assets/height.png";
 import weight from "../assets/weight.png";
 import imgTypesObj from "../imgTypesObj.js";
+import load from "../assets/loading.gif";
 
 const Detail = () => {
+
   const dispatch = useDispatch();
   const pokemon = useSelector((state) => state.id);
+  const loading_id = useSelector(state => state.loading_id);
+
   const { id } = useParams();
 
   useEffect(() => {
-    dispatch(getPokeId(id));
+    if (pokemon) {
+      dispatch(setLoadingId(true));
+      dispatch(getPokeId(id))
+      .then(() => dispatch(setLoadingId(false)))
 
-    return () => {
+      return () => {
       //se llama solo una vez cuando se desmonta componente
       dispatch(clearDetail());
-    };
-  }, [dispatch, id]);
+     }
+    }
+  }, [dispatch, id, pokemon]);
 
   return (
     <div className={style.general}>
-      {
+      
+      {loading_id ? (
+            <div className={style.loading}>
+                <img className={style.loadgif} src={load} alt="loading..." />
+            </div>
+
+      ) : (
+
+        <>
+
         <div className={style.containerGen}>
           <div className={style.containerPj}>
             <h2 className={style.h1Stats}>Stats:</h2>
@@ -103,10 +120,12 @@ const Detail = () => {
                   })}
                 </div>
               )}
-            </div>
+            </div> 
           </div>
+
         </div>
-      }
+        </>
+      )}
     </div>
   );
 };

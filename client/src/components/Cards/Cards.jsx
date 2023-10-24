@@ -57,7 +57,8 @@ return (
 
         {loading ? (
             <div className={style.loading}>
-                <img className={style.loadgif} src={load} alt="loading..." /></div>
+                <img className={style.loadgif} src={load} alt="loading..." />
+            </div>
         ) : (
             <>
             <SearchBar />
