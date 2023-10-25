@@ -15,23 +15,24 @@ import load from "../assets/loading.gif";
 const Detail = () => {
 
   const dispatch = useDispatch();
-  const pokemon = useSelector((state) => state.id);
+  const pokemon = useSelector(state => state.id);
   const loading_id = useSelector(state => state.loading_id);
 
   const { id } = useParams();
+  
 
   useEffect(() => {
-    if (pokemon) {
+    console.log(pokemon)
+    if (pokemon?.name === undefined) {
       dispatch(setLoadingId(true));
       dispatch(getPokeId(id))
       .then(() => dispatch(setLoadingId(false)))
-
-      return () => {
       //se llama solo una vez cuando se desmonta componente
+      return () => {
       dispatch(clearDetail());
      }
     }
-  }, [dispatch, id, pokemon]);
+  }, [dispatch, id]);
 
   return (
     <div className={style.general}>

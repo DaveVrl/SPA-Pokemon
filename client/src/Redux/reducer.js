@@ -4,7 +4,7 @@ const initialState = {
     pokemons: [], 
     types: [],
     pokemon: [], //name
-    id: [],
+    id: {},
     allPokes: [],
     db:[],
     currentPage: 1,
