@@ -86,7 +86,7 @@ export const getPokeId = (id) => {
         try {
             const { data } = await axios.get(`/pokemons/${id}`);
             if(!data) throw new Error("No se obtuvo la data-ID");
-console.log(data)
+
             return dispatch({
                 type: GET_POKE_ID,
                 payload: data
