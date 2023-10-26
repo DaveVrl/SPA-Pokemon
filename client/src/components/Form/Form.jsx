@@ -6,6 +6,7 @@ import validation from "./validation";
 import { useNavigate } from "react-router-dom";
 
 const Form = () => {
+    window.scrollTo(0, 0);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 

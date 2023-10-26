@@ -13,7 +13,7 @@ import imgTypesObj from "../imgTypesObj.js";
 import load from "../assets/loading.gif";
 
 const Detail = () => {
-
+  window.scrollTo(0, 0);
   const dispatch = useDispatch();
   const pokemon = useSelector(state => state.id);
   const loading_id = useSelector(state => state.loading_id);
