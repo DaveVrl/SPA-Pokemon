@@ -68,6 +68,12 @@
     border: none;
     
 }
+
+@media (max-width:425px) {
+    .imgL {
+        width: 300px;
+    }
+}
 /* ---------------------------------------- */
 
 /* amarillo #fbcb1fe0 */
