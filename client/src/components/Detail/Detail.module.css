@@ -112,3 +112,28 @@
     user-select: none;
     -webkit-user-drag: none; 
 }
+
+@media (max-width: 425px) {
+    .containerGen {
+        width: 310px;
+        height: 700px;
+        flex-direction: column-reverse;
+    }
+
+    .pokeImg {
+        width: 180px;
+        height: 180px;
+    }
+
+    .stat_and_imgContainer {
+        margin: 6px 0;
+    }
+
+    .containerImg {
+        margin-top: 10px;
+    }
+
+    .types {
+        gap: 8px;
+    }
+}

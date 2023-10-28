@@ -24,3 +24,24 @@
     cursor: pointer;
     user-select: none;
 }
+
+@media (max-width:425px) {
+    .container {
+        flex-direction: column-reverse;
+        width: fit-content;
+        margin: 4px auto;
+    }
+
+    .container label {
+        margin-bottom: 6px;
+    }
+
+    .containers {
+        margin-top: 6px;
+    }
+
+    .containers select {
+        align-self: center;
+        width: 100px;
+    }
+}

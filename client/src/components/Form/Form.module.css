@@ -158,3 +158,25 @@ form {
     margin-top: 50px;
     margin-bottom: 50px;
 }
+
+@media (max-width: 425px) {
+    form {
+        width: 300px;
+        margin-top: 20px;
+    }
+
+    .container_3 {
+        flex-direction: column;
+        gap: 0;
+        width: fit-content;
+        margin: 0 auto;
+    }
+
+    .types {
+        gap: 1rem;
+    }
+
+    .container_types {
+        margin-top: 20px;
+    }
+}

@@ -88,3 +88,10 @@ user-select: none;
 .types img {
     max-width: 110px;
 }
+
+@media (max-width:425px) {
+    .container {
+        margin-top: 12px;
+        margin-bottom: 2px;
+    }
+}

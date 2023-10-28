@@ -9,8 +9,7 @@
   url(./components/assets/fondo.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: fixed;
-  background-attachment: fixed;
+  background-attachment:fixed;
   justify-content: flex-start;
 }
 
