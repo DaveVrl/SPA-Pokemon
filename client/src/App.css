@@ -19,3 +19,9 @@
   margin: 0;
 }
 
+@media (max-width: 768px) {
+  .App {
+    background-attachment: scroll;
+  }
+}
+
