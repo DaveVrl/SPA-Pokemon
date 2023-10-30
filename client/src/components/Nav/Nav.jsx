@@ -88,7 +88,7 @@ const Nav = () => {
         alt="#"
       />
 
-      {isMobile && /^\/detail\/\d+$/.test(location.pathname) ? null : (
+      {isMobile && /^\/detail\/.+/.test(location.pathname) ? null : (
         <button
           onClick={() => navigate("/form")}
           className={`${style.btn2} ${
