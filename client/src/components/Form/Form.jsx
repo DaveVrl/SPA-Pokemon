@@ -216,9 +216,6 @@ console.log(pokeData)
                         
                         <label>Unknown</label>
                             <input type="checkbox" value="unknown" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("unknown")} style={{ cursor: isLoading ? "wait" : "pointer" }}/>
-                        
-                        <label>Shadow</label>
-                            <input type="checkbox" value="shadow" onChange={handleCheckboxChange} disabled={pokeData.type.length >= 2 && !pokeData.type.includes("shadow")} style={{ cursor: isLoading ? "wait" : "pointer" }}/>
                         </div>
                     </div>
                     {errors.type && <p className={style.errTyp}>{errors.type}</p>}
