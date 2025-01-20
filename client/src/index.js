@@ -9,6 +9,7 @@ import axios from 'axios';
 
 // axios.defaults.baseURL = `http://localhost:3001`
 axios.defaults.baseURL = `https://poke-server-67q9.onrender.com/`
+// comento para pushear ... (borrar luego)
 
 ReactDOM.render(
   <Provider store={store}>
